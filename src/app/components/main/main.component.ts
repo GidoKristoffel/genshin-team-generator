@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IMember } from "../../interfaces/members.interface";
 import { members } from "../../../assets/members";
-import { environment } from "../../../environments/environment.development";
+import { environment } from "../../../environments/environment";
 
 @Component({
   selector: 'app-main',
