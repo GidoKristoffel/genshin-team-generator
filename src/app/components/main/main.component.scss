@@ -28,6 +28,9 @@ button {
   border: 1px solid $tan;
   border-radius: 32px;
   color: $tan;
+  background-image:
+    url(https://wiki.hoyolab.com/_nuxt/img/c-btn-deck-n-l.de27009.png),
+    url(https://wiki.hoyolab.com/_nuxt/img/c-btn-deck-n-r.0940ac4.png);
   background-size: 12px 26px;
   background-color: rgba($tan, 0.1);
   background-position: 0, 100%;
@@ -47,6 +50,7 @@ button {
   height: 225px;
   width: 180px;
   position: relative;
+  background-image: url(https://wiki.hoyolab.com/_nuxt/img/characterCardBg.e8b070a.png);
   background-size: 100% 100%;
   flex-direction: column;
   gap: 10px;
