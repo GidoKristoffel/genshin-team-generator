@@ -1,77 +1,68 @@
-.genshin-entry-body-bg {
+@import "src/app/shared/styles/mixins";
+@import "src/app/shared/styles/colors";
+
+app-video-bg {
   position: fixed;
 }
 
-.genshin-entry-page {
+.main {
+  @include flex-center;
+  @include max-cover;
+
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
   flex-direction: column;
+  gap: 20px;
 }
 
 .result {
-  display: flex;
+  @include flex-center;
+
   flex-direction: row;
   gap: 20px;
-  margin-top: 20px;
-}
-
-video {
-  height: 100vh;
-  -o-object-fit: cover;
-  object-fit: cover;
-  width: 100vw;
 }
 
 button {
-  background-size: 12px 26px;
-  border: 1px solid #d3bc8e;
-  border-radius: 32px;
-  color: #d3bc8e;
-  font-size: 12px;
-  font-weight: 500;
   height: 40px;
-  line-height: 16px;
-  min-width: 138px;
   padding: 0 24px;
-  background-color: unset;
-  background-color: hsla(40, 44%, 69%, .1);
+  min-width: 138px;
+  border: 1px solid $tan;
+  border-radius: 32px;
+  color: $tan;
+  background-size: 12px 26px;
+  background-color: rgba($tan, 0.1);
   background-position: 0, 100%;
   background-repeat: no-repeat, no-repeat;
-  font-family: HYWenHei;
+  font-size: 12px;
+  font-family: HYWenHei, sans-serif;
 
   &:hover {
-    background-color: rgba(211, 188, 142, 0.2);
+    cursor: unset;
+    background-color: rgba($tan, 0.2);
   }
 }
 
 .character-card {
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  position: relative;
-  cursor: pointer;
+  @include flex-center;
+
   height: 225px;
   width: 180px;
-  display: flex;
+  position: relative;
+  background-size: 100% 100%;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  gap: 10px;
 }
 
+// continue from here
+
 .character-card-element {
-  background: #323947;
-  border: 1px solid #4a5366;
-  border-radius: 50%;
-  box-sizing: content-box;
-  position: absolute;
-  height: 24px;
-  left: 32px;
-  padding: 4px;
-  top: 24px;
   width: 24px;
-  z-index: 10000;
+  padding: 4px;
+  border: 1px solid $independence;
+  border-radius: 50%;
+  position: absolute;
+  top: 24px;
+  z-index: 1;
+  background: $crayola;
 }
 
 .character-card-icon {

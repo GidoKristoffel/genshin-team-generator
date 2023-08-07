@@ -1,28 +1,19 @@
-<div class="main">
-  <div class="genshin-entry-body-bg">
-    <video autoplay="autoplay" id="genshin-entry-body-bg21834" loop="loop" muted="muted"
-           ontouchmove="return false;" playsinline="playsinline" preload="auto"
-           video webkit-playsinline="webkit-playsinline" x5-video-player-type="h5">
-      <source src="assets/videos/bg_anemo.c91ba8c.webm" type="video/webm">
-      <source src="assets/videos/bg_anemo.4b8e607.mp4" type="video/mp4">
-    </video>
-  </div>
+<app-video-bg></app-video-bg>
 
-  <div class="genshin-entry-page">
-    <button (click)="generateRandomTeam()">Generate</button>
-    <div class="result">
-      <article *ngFor="let member of team" class="character-card">
-        <div class="character-card-wrapper">
-          <img alt="element" class="character-card-element" [src]="env.host + '/assets/img/' + member.elementalType + '.png'">
-          <div class="character-card-icon {{ member.quality }}">
-            <img alt="" class="character-icon-bg" [src]="env.host + '/assets/img/genshin_avatar_bg.fe7b136.png'">
-            <img alt="" class="character-icon" decoding="async" [src]="env.host + '/assets/img/characters/' + member.icon">
-          </div>
+<div class="main">
+  <button (click)="generateRandomTeam()">Generate</button>
+  <div class="result">
+    <article *ngFor="let member of team" class="character-card">
+      <div class="character-card-wrapper">
+        <img alt="element" class="character-card-element" [src]="env.host + '/assets/img/' + member.elementalType + '.png'">
+        <div class="character-card-icon {{ member.quality }}">
+          <img alt="" class="character-icon-bg" [src]="env.host + '/assets/img/genshin_avatar_bg.fe7b136.png'">
+          <img alt="" class="character-icon" decoding="async" [src]="env.host + '/assets/img/characters/' + member.icon">
         </div>
-        <div class="character-card-name">
-          <span class="character-name">{{ member.name }}</span>
-        </div>
-      </article>
-    </div>
+      </div>
+      <div class="character-card-name">
+        <span class="character-name">{{ member.name }}</span>
+      </div>
+    </article>
   </div>
 </div>
