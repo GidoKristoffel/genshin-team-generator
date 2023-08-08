@@ -2,13 +2,13 @@
   <div class="avatar">
     <img alt="element"
          class="element"
-         [src]="env.host + '/assets/img/' + character.elementalType + '.png'">
+         [ngSrc]="env.host + '/assets/img/' + character.elementalType + '.png'">
     <div class="icon-wrapper {{ character.quality }}">
       <img class="icon-bg"
-           [src]="env.host + '/assets/img/genshin_avatar_bg.fe7b136.png'">
+           [ngSrc]="env.host + '/assets/img/genshin_avatar_bg.fe7b136.png'">
       <img class="icon"
            decoding="async"
-           [src]="env.host + '/assets/img/characters/' + character.icon">
+           [ngSrc]="env.host + '/assets/img/characters/' + character.icon" priority>
     </div>
   </div>
   <div class="name">
