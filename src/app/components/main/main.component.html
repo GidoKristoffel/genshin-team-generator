@@ -4,17 +4,8 @@
   <button (click)="generateRandomTeam()">Generate</button>
 
   <div class="result">
-    <article *ngFor="let member of team" class="card">
-      <div class="card-wrapper">
-        <img alt="element" class="card-element" [src]="env.host + '/assets/img/' + member.elementalType + '.png'">
-        <div class="character-card-icon {{ member.quality }}">
-          <img alt="" class="character-icon-bg" [src]="env.host + '/assets/img/genshin_avatar_bg.fe7b136.png'">
-          <img alt="" class="character-icon" decoding="async" [src]="env.host + '/assets/img/characters/' + member.icon">
-        </div>
-      </div>
-      <div class="card-name-wrapper">
-        <span class="card-name">{{ member.name }}</span>
-      </div>
-    </article>
+    <app-character-card *ngFor="let character of team"
+                        [character]="character"
+    ></app-character-card>
   </div>
 </div>
