@@ -1,0 +1,77 @@
+@import "src/app/shared/styles/mixins";
+@import "src/app/shared/styles/colors";
+
+.card {
+  @include flex-center;
+
+  position: relative;
+  flex-direction: column;
+  gap: 10px;
+  background-image: url("https://wiki.hoyolab.com/_nuxt/img/characterCardBg.e8b070a.png");
+  background-size: 100% 100%;
+  width: 180px;
+  height: 225px;
+}
+
+.element {
+  position: absolute;
+  top: 24px;
+  z-index: 1;
+  border: 1px solid $independence;
+  border-radius: 50%;
+  background: $crayola;
+  padding: 4px;
+  width: 24px;
+}
+
+.name {
+  @include flex-center;
+
+  width: 140px;
+  height: 74px;
+  text-align: center;
+
+  & > span {
+    display: -webkit-box;
+    width: 100%;
+    overflow: hidden;
+    line-height: 20px;
+    color: rgba($white, 0.65);
+    font-family: sans-serif;
+    font-size: 14px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+}
+
+.icon-wrapper {
+  box-sizing: border-box;
+  margin-top: 20px;
+  border: 2px solid $independence;
+  border-radius: 50%;
+  width: 124px;
+  height: 124px;
+  overflow: hidden;
+
+  & img {
+    width: 100%;
+  }
+
+  & .icon-bg {
+    position: absolute;
+    width: 124px;
+  }
+
+  & .icon {
+    position: relative;
+    top: 0;
+  }
+}
+
+.epic {
+  background: linear-gradient(180deg, $purple-navy, $purple-mountain-majesty);
+}
+
+.legendary {
+  background: linear-gradient(180deg, $coconut, $copper);
+}
