@@ -1,0 +1,10 @@
+{
+  "SCSS": {
+    "beautifiers": [
+      "CSScomb"
+    ],
+    "CSScomb": {
+      "prefer_beautifier_config": true
+    }
+  }
+}

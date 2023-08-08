@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-concentric-order"
+  ],
+  "rules": {
+    "color-hex-length": "long",
+    "string-quotes": "double",
+    "unit-case": "lower",
+    "property-case": "lower"
+  }
+}
