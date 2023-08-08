@@ -1,17 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
 @font-face {
-  font-family: 'HYWenHei';
-  src: url('./assets/fonts/zhcn.woff') format('woff');
+  font-family: HYWenHei;
+  src: url("./assets/fonts/zhcn.woff") format("woff");
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Adelle Cyrillic';
-  src: url('./assets/fonts/AdelleCyrillic.ttf') format('truetype');
+  font-family: "Adelle Cyrillic";
+  src: url("./assets/fonts/AdelleCyrillic.ttf") format("truetype");
 }
 
 body {
   margin: 0;
-  cursor: url(https://wiki.hoyolab.com/_nuxt/img/genshin.69b4156.png), auto;
+  cursor: url("https://wiki.hoyolab.com/_nuxt/img/genshin.69b4156.png"), auto;
 }
