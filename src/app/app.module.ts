@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './components/main/main.component';
 import { VideoBgComponent } from './components/video-bg/video-bg.component';
 import { CharacterCardComponent } from './components/character-card/character-card.component';
+import { NgOptimizedImage } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -14,10 +15,11 @@ import { CharacterCardComponent } from './components/character-card/character-ca
     VideoBgComponent,
     CharacterCardComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NgOptimizedImage,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
