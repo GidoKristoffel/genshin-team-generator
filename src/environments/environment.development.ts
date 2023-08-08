@@ -1,4 +1,5 @@
 export const environment = {
   production: false,
-  host: ''
+  host: '',
+  store: 'https://wiki.hoyolab.com/_nuxt/img'
 };
