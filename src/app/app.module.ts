@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './components/main/main.component';
 import { VideoBgComponent } from './components/video-bg/video-bg.component';
 import { CharacterCardComponent } from './components/character-card/character-card.component';
+import { DragDropModule } from "@angular/cdk/drag-drop";
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { CharacterCardComponent } from './components/character-card/character-ca
   imports: [
     BrowserModule,
     AppRoutingModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

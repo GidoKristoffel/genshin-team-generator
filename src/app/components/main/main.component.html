@@ -3,9 +3,12 @@
 <div class="main">
   <button (click)="generateRandomTeam()">Generate</button>
 
-  <div class="result">
+  <div class="result"
+       cdkDropListOrientation="horizontal"
+       cdkDropList (cdkDropListDropped)="onItemDrop($event)">
     <app-character-card *ngFor="let character of team"
                         [character]="character"
+                        cdkDrag
     ></app-character-card>
   </div>
 </div>
