@@ -11,6 +11,7 @@
   background-size: 100% 100%;
   width: 180px;
   height: 225px;
+  user-select: none;
 }
 
 .element {
@@ -22,6 +23,7 @@
   background: $crayola;
   padding: 4px;
   width: 24px;
+  height: 24px;
 }
 
 .name {

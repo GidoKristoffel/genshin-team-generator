@@ -9,6 +9,9 @@
     <app-character-card *ngFor="let character of team"
                         [character]="character"
                         cdkDrag
-    ></app-character-card>
+                        cdkDragLockAxis="x"
+                        cdkDragBoundary=".result">
+      <div class="character-card-placeholder" *cdkDragPlaceholder></div>
+    </app-character-card>
   </div>
 </div>
