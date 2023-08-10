@@ -1,8 +1,14 @@
 <div class="card">
-  <app-switch-icon defaultIcon="assets/img/unlock.svg"
-                   switchedIcon="assets/img/lock.svg"
-                   (change)="changeLock($event)"
-  ></app-switch-icon>
+  <div class="card-settings">
+    <app-switch-icon defaultIcon="assets/img/unlock.svg"
+                     switchedIcon="assets/img/lock.svg"
+                     (change)="changeLock($event)"
+    ></app-switch-icon>
+    <app-switch-icon defaultIcon="assets/img/pin.svg"
+                     switchedIcon="assets/img/pin.svg"
+                     (change)="changePin($event)"
+    ></app-switch-icon>
+  </div>
   <div class="avatar">
     <img alt="element"
          class="element"

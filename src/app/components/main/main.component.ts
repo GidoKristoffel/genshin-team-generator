@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IMember, ITeamMember } from "../../interfaces/members.interface";
 import { ShuffleService } from "../../services/shuffle.service";
-import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
+import { CdkDragDrop } from "@angular/cdk/drag-drop";
+import { DragAndDropService } from "../../services/drag-and-drop.service";
 
 @Component({
   selector: 'app-main',
@@ -12,7 +13,8 @@ export class MainComponent {
   public team: ITeamMember[] = [];
 
   constructor(
-    private shuffleService: ShuffleService
+    private shuffleService: ShuffleService,
+    private dragAndDropService: DragAndDropService
   ) {}
 
   public generateRandomTeam(): void {
@@ -20,10 +22,14 @@ export class MainComponent {
   }
 
   public onItemDrop(event: CdkDragDrop<IMember[]>): void {
-    moveItemInArray(this.team, event.previousIndex, event.currentIndex);
+    this.dragAndDropService.moveItemInArrayIfAllowed(this.team, event.previousIndex, event.currentIndex);
   }
 
-  public lockChange(lock: boolean, index: number): void {
-    this.team[index].isLock = lock;
+  public pinChange(pinned: boolean, index: number): void {
+    this.team[index].pinned = pinned;
+  }
+
+  sortPredicateForDisableItem(items: ITeamMember[]): (index: number) => boolean {
+    return this.dragAndDropService.sortPredicateForDisableItem(items);
   }
 }

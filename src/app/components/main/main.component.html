@@ -5,14 +5,14 @@
 
   <div class="result"
        cdkDropListOrientation="horizontal"
-       cdkDropList (cdkDropListDropped)="onItemDrop($event)">
+       cdkDropList (cdkDropListDropped)="onItemDrop($event)" [cdkDropListSortPredicate]="sortPredicateForDisableItem(team)">
     <app-character-card *ngFor="let character of team; let i = index"
                         [character]="character"
-                        (lockChange)="lockChange($event, i)"
+                        (pinChange)="pinChange($event, i)"
                         cdkDrag
                         cdkDragLockAxis="x"
                         cdkDragBoundary=".result"
-                        [cdkDragDisabled]="character.isLock">
+                        [cdkDragDisabled]="character.pinned">
       <div class="character-card-placeholder" *cdkDragPlaceholder></div>
     </app-character-card>
   </div>

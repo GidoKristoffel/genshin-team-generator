@@ -45,4 +45,5 @@ export interface IMember {
 
 export interface ITeamMember extends IMember {
   isLock: boolean;
+  pinned: boolean;
 }

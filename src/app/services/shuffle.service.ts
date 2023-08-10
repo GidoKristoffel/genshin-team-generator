@@ -28,6 +28,6 @@ export class ShuffleService {
     let randTravelerIds = this.shuffleArray(this.travelerIds);
     return this.allMembers
       .filter((member: IMember) => !this.travelerIds.includes(member.id) || randTravelerIds[0] === member.id)
-      .map((member: IMember) => ({...member, isLock: false}));
+      .map((member: IMember) => ({...member, isLock: false, pinned: false}));
   }
 }

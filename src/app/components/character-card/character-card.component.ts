@@ -11,8 +11,13 @@ export class CharacterCardComponent {
   @Input() character!: IMember;
   public env = environment;
   @Output() lockChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() pinChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public changeLock(lock: boolean): void {
     this.lockChange.emit(lock);
+  }
+
+  public changePin(lock: boolean): void {
+    this.pinChange.emit(lock);
   }
 }

@@ -12,6 +12,16 @@
   width: 180px;
   height: 225px;
   user-select: none;
+
+  &-settings {
+    display: flex;
+    position: absolute;
+    top: 15px;
+    right: 7px;
+    flex-direction: row;
+    gap: 4px;
+    z-index: 1;
+  }
 }
 
 .lock {
