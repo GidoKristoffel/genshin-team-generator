@@ -36,9 +36,13 @@ export enum ERegion {
 export interface IMember {
   id: number;
   name: string;
-  icon: string; 
+  icon: string;
   quality: EQuality;
   elementalType: EElementalType;
   weapon: EWeapon;
   region: ERegion;
+}
+
+export interface ITeamMember extends IMember {
+  isLock: boolean;
 }

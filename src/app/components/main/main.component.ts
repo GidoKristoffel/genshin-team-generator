@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IMember } from "../../interfaces/members.interface";
+import { IMember, ITeamMember } from "../../interfaces/members.interface";
 import { ShuffleService } from "../../services/shuffle.service";
 import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
 
@@ -9,7 +9,7 @@ import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-  public team: IMember[] = [];
+  public team: ITeamMember[] = [];
 
   constructor(
     private shuffleService: ShuffleService
@@ -21,5 +21,9 @@ export class MainComponent {
 
   public onItemDrop(event: CdkDragDrop<IMember[]>): void {
     moveItemInArray(this.team, event.previousIndex, event.currentIndex);
+  }
+
+  public lockChange(lock: boolean, index: number): void {
+    this.team[index].isLock = lock;
   }
 }

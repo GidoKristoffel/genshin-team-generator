@@ -1,0 +1,28 @@
+@import "src/app/shared/styles/colors";
+@import "src/app/shared/styles/mixins";
+
+.icon {
+  @include flex-center;
+
+  box-sizing: border-box;
+  position: absolute;
+  top: 15px;
+  right: 7px;
+  border-radius: 5px;
+  width: 24px;
+  height: 24px;
+
+  & img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.default {
+  background-color: $bone;
+}
+
+.switched {
+  border: 1px solid $grullo;
+  background-color: $independence;
+}

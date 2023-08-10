@@ -1,13 +1,20 @@
 <div class="card">
+  <app-switch-icon defaultIcon="assets/img/unlock.svg"
+                   switchedIcon="assets/img/lock.svg"
+                   (change)="changeLock($event)"
+  ></app-switch-icon>
   <div class="avatar">
     <img alt="element"
          class="element"
+         draggable="false"
          [src]="env.host + '/assets/img/' + character.elementalType + '.png'">
     <div class="icon-wrapper {{ character.quality }}">
       <img class="icon-bg"
+           draggable="false"
            [src]="env.host + '/assets/img/genshin_avatar_bg.fe7b136.png'">
       <img class="icon"
            decoding="async"
+           draggable="false"
            [src]="env.host + '/assets/img/characters/' + character.icon">
     </div>
   </div>

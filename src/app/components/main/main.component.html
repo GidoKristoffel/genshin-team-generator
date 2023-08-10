@@ -6,11 +6,13 @@
   <div class="result"
        cdkDropListOrientation="horizontal"
        cdkDropList (cdkDropListDropped)="onItemDrop($event)">
-    <app-character-card *ngFor="let character of team"
+    <app-character-card *ngFor="let character of team; let i = index"
                         [character]="character"
+                        (lockChange)="lockChange($event, i)"
                         cdkDrag
                         cdkDragLockAxis="x"
-                        cdkDragBoundary=".result">
+                        cdkDragBoundary=".result"
+                        [cdkDragDisabled]="character.isLock">
       <div class="character-card-placeholder" *cdkDragPlaceholder></div>
     </app-character-card>
   </div>
