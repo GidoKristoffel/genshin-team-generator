@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IMember } from "../interfaces/members.interface";
+import { IMember, ITeamMember } from "../interfaces/members.interface";
 import { members } from "../../assets/members";
 
 @Injectable({
@@ -8,9 +8,9 @@ import { members } from "../../assets/members";
 export class ShuffleService {
   private allMembers: IMember[] = members;
   private travelerIds: number[] = [3, 12, 14, 66];
-  public team: IMember[] = [];
+  public team: ITeamMember[] = [];
 
-  public generateRandomTeam(): IMember[] {
+  public generateRandomTeam(): ITeamMember[] {
     let temp = this.copyAllMembers();
     this.team = this.shuffleArray(temp).slice(0, 4);
     return this.team;
@@ -24,10 +24,10 @@ export class ShuffleService {
     return arr;
   }
 
-  private copyAllMembers(): IMember[] {
+  private copyAllMembers(): ITeamMember[] {
     let randTravelerIds = this.shuffleArray(this.travelerIds);
     return this.allMembers
       .filter((member: IMember) => !this.travelerIds.includes(member.id) || randTravelerIds[0] === member.id)
-      .map((member: IMember) => ({...member}));
+      .map((member: IMember) => ({...member, isLock: false}));
   }
 }

@@ -7,6 +7,7 @@ import { MainComponent } from './components/main/main.component';
 import { VideoBgComponent } from './components/video-bg/video-bg.component';
 import { CharacterCardComponent } from './components/character-card/character-card.component';
 import { DragDropModule } from "@angular/cdk/drag-drop";
+import { SwitchIconComponent } from './components/switch-icon/switch-icon.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
     MainComponent,
     VideoBgComponent,
     CharacterCardComponent,
+    SwitchIconComponent,
   ],
   imports: [
     BrowserModule,

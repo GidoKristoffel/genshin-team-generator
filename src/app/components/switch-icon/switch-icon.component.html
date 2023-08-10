@@ -1,0 +1,6 @@
+<div class="icon" [ngClass]="isSwitched ? 'switched' : 'default'" (click)="changeIcon()">
+  <img *ngIf="isSwitched; else default" [src]="switchedIcon">
+  <ng-template #default>
+    <img [src]="defaultIcon">
+  </ng-template>
+</div>
