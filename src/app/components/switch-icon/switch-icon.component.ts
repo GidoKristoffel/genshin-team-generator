@@ -9,7 +9,7 @@ export class SwitchIconComponent {
   @Input() defaultIcon: string = '';
   @Input() switchedIcon: string = '';
 
-  isSwitched: boolean = false;
+  @Input() isSwitched: boolean = false;
 
   @Output() change: EventEmitter<boolean> = new EventEmitter<boolean>();
 

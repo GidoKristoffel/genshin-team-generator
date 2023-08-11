@@ -4,16 +4,23 @@
   <button (click)="generateRandomTeam()">Generate</button>
 
   <div class="result"
+       cdkDropList
        cdkDropListOrientation="horizontal"
-       cdkDropList (cdkDropListDropped)="onItemDrop($event)" [cdkDropListSortPredicate]="sortPredicateForDisableItem(team)">
-    <app-character-card *ngFor="let character of team; let i = index"
-                        [character]="character"
-                        (pinChange)="pinChange($event, i)"
-                        cdkDrag
-                        cdkDragLockAxis="x"
-                        cdkDragBoundary=".result"
-                        [cdkDragDisabled]="character.pinned">
-      <div class="character-card-placeholder" *cdkDragPlaceholder></div>
-    </app-character-card>
+       (cdkDropListDropped)="onItemDrop($event)">
+    <ng-container *ngFor="let character of team; let i = index">
+      <app-character-card *ngIf="!character.pinned"
+                          [character]="character"
+                          (pinChange)="pinChange($event, i)"
+                          cdkDrag
+                          cdkDragBoundary=".result"
+                          [cdkDragDisabled]="character.pinned">
+        <div class="character-card-placeholder" *cdkDragPlaceholder></div>
+      </app-character-card>
+      <app-character-card *ngIf="character.pinned"
+                          [character]="character"
+                          (pinChange)="pinChange($event, i)">
+        <div class="character-card-placeholder" *cdkDragPlaceholder></div>
+      </app-character-card>
+    </ng-container>
   </div>
 </div>
