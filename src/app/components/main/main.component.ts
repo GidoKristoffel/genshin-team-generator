@@ -18,7 +18,8 @@ export class MainComponent {
   ) {}
 
   public generateRandomTeam(): void {
-    this.team = this.shuffleService.generateRandomTeam();
+    const lockedMembers = this.team.filter((member) => member.locked).map((member) => member.id);
+    this.team = this.shuffleService.generateRandomTeam(lockedMembers);
   }
 
   public onItemDrop(event: CdkDragDrop<ITeamMember[]>): void {
@@ -27,5 +28,9 @@ export class MainComponent {
 
   public pinChange(pinned: boolean, index: number): void {
     this.team[index].pinned = pinned;
+  }
+
+  public lockChange(locked: boolean, index: number): void {
+    this.team[index].locked = locked;
   }
 }
