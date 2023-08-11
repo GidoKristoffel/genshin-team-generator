@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { environment } from "../../../environments/environment";
-import { IMember } from "../../interfaces/members.interface";
+import { IMember, ITeamMember } from "../../interfaces/members.interface";
 
 @Component({
   selector: 'app-character-card',
@@ -8,7 +8,7 @@ import { IMember } from "../../interfaces/members.interface";
   styleUrls: ['./character-card.component.scss']
 })
 export class CharacterCardComponent {
-  @Input() character!: IMember;
+  @Input() character!: ITeamMember;
   public env = environment;
   @Output() lockChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() pinChange: EventEmitter<boolean> = new EventEmitter<boolean>();
