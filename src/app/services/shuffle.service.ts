@@ -6,13 +6,20 @@ import { members } from "../../assets/members";
   providedIn: 'root'
 })
 export class ShuffleService {
-  private allMembers: IMember[] = members;
+  private allMembers: ITeamMember[] = [];
   private travelerIds: number[] = [3, 12, 14, 66];
   public team: ITeamMember[] = [];
 
-  public generateRandomTeam(): ITeamMember[] {
-    let temp = this.copyAllMembers();
-    this.team = this.shuffleArray(temp).slice(0, 4);
+  constructor() {
+    let randTravelerIds = this.shuffleArray(this.travelerIds);
+    this.allMembers = members
+      .filter((member: IMember) => !this.travelerIds.includes(member.id) || randTravelerIds[0] === member.id)
+      .map((member: IMember) => ({...member, locked: false, pinned: false}));
+  }
+
+  public generateRandomTeam(lockedMembers: number[]): ITeamMember[] {
+    this.allMembers = this.copyAllMembers();
+    this.team = this.shuffleTeam(this.allMembers, lockedMembers).slice(0, 4);
     return this.team;
   }
 
@@ -24,10 +31,21 @@ export class ShuffleService {
     return arr;
   }
 
+  private shuffleTeam(arr: ITeamMember[], locked: number[] = []): ITeamMember[] {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      console.log(!locked.includes(arr[i].id) && !locked.includes(arr[j].id));
+      if (!locked.includes(arr[i].id) && !locked.includes(arr[j].id)) {
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+    }
+    return arr;
+  }
+
   private copyAllMembers(): ITeamMember[] {
     let randTravelerIds = this.shuffleArray(this.travelerIds);
     return this.allMembers
-      .filter((member: IMember) => !this.travelerIds.includes(member.id) || randTravelerIds[0] === member.id)
-      .map((member: IMember) => ({...member, isLock: false, pinned: false}));
+      .filter((member: ITeamMember) => !this.travelerIds.includes(member.id) || randTravelerIds[0] === member.id)
+      .map((member: ITeamMember) => ({...member, pinned: member.pinned && member.locked}));
   }
 }

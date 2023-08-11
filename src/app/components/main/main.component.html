@@ -11,6 +11,7 @@
       <app-character-card *ngIf="!character.pinned"
                           [character]="character"
                           (pinChange)="pinChange($event, i)"
+                          (lockChange)="lockChange($event, i)"
                           cdkDrag
                           cdkDragBoundary=".result"
                           [cdkDragDisabled]="character.pinned">
@@ -18,7 +19,8 @@
       </app-character-card>
       <app-character-card *ngIf="character.pinned"
                           [character]="character"
-                          (pinChange)="pinChange($event, i)">
+                          (pinChange)="pinChange($event, i)"
+                          (lockChange)="lockChange($event, i)">
         <div class="character-card-placeholder" *cdkDragPlaceholder></div>
       </app-character-card>
     </ng-container>
