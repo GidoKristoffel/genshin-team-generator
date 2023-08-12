@@ -6,7 +6,7 @@
   <div class="result"
        cdkDropList
        cdkDropListOrientation="horizontal"
-       (cdkDropListDropped)="onItemDrop($event)">
+       (cdkDropListDropped)="onDrop($event)">
     <ng-container *ngFor="let character of team; let i = index">
       <app-character-card *ngIf="!character.pinned"
                           [character]="character"
