@@ -48,4 +48,8 @@ export class ShuffleService {
       .filter((member: ITeamMember) => !this.travelerIds.includes(member.id) || randTravelerIds[0] === member.id)
       .map((member: ITeamMember) => ({...member, pinned: member.pinned && member.locked}));
   }
+
+  public updateTeamPosition(team: ITeamMember[]): void {
+    this.allMembers.splice(0, team.length, ...team);
+  }
 }

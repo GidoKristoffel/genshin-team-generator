@@ -22,8 +22,9 @@ export class MainComponent {
     this.team = this.shuffleService.generateRandomTeam(lockedMembers);
   }
 
-  public onItemDrop(event: CdkDragDrop<ITeamMember[]>): void {
+  public onDrop(event: CdkDragDrop<ITeamMember[]>): void {
     this.team = this.dragAndDropService.moveItemInArray(event, this.team);
+    this.shuffleService.updateTeamPosition(this.team);
   }
 
   public pinChange(pinned: boolean, index: number): void {
