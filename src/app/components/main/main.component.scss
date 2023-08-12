@@ -5,13 +5,36 @@ app-video-bg {
   position: fixed;
 }
 
-.main {
+nav {
   @include flex-center;
+
+  box-sizing: border-box;
+  justify-content: space-between;
+  background: rgb(0 0 0 / 16%);
+  padding: 5px 10px 5px 5px;
+  width: 100%;
+  backdrop-filter: blur(25px);
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 10px;
+}
+
+.main {
   @include max-cover;
 
+  display: flex;
   position: relative;
   flex-direction: column;
-  gap: 20px;
+}
+
+.logo {
+  & img {
+    width: 42px;
+  }
 }
 
 .result {
@@ -19,6 +42,14 @@ app-video-bg {
 
   flex-direction: row;
   gap: 20px;
+  width: 100%;
+}
+
+.filters {
+  border-radius: 16px;
+  background-color: #153434;
+  width: 400px;
+  height: calc(100vh - 76px);
 }
 
 button {
