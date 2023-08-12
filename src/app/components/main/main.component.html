@@ -1,28 +1,35 @@
 <app-video-bg></app-video-bg>
 
 <div class="main">
-  <button (click)="generateRandomTeam()">Generate</button>
-
-  <div class="result"
-       cdkDropList
-       cdkDropListOrientation="horizontal"
-       (cdkDropListDropped)="onDrop($event)">
-    <ng-container *ngFor="let character of team; let i = index">
-      <app-character-card *ngIf="!character.pinned"
-                          [character]="character"
-                          (pinChange)="pinChange($event, i)"
-                          (lockChange)="lockChange($event, i)"
-                          cdkDrag
-                          cdkDragBoundary=".result"
-                          [cdkDragDisabled]="character.pinned">
-        <div class="character-card-placeholder" *cdkDragPlaceholder></div>
-      </app-character-card>
-      <app-character-card *ngIf="character.pinned"
-                          [character]="character"
-                          (pinChange)="pinChange($event, i)"
-                          (lockChange)="lockChange($event, i)">
-        <div class="character-card-placeholder" *cdkDragPlaceholder></div>
-      </app-character-card>
-    </ng-container>
-  </div>
+  <nav>
+    <div class="logo">
+      <img src="assets/img/logo.png">
+    </div>
+    <button (click)="generateRandomTeam()">Generate</button>
+  </nav>
+  <main>
+    <div class="result"
+         cdkDropList
+         cdkDropListOrientation="horizontal"
+         (cdkDropListDropped)="onDrop($event)">
+      <ng-container *ngFor="let character of team; let i = index">
+        <app-character-card *ngIf="!character.pinned"
+                            [character]="character"
+                            (pinChange)="pinChange($event, i)"
+                            (lockChange)="lockChange($event, i)"
+                            cdkDrag
+                            cdkDragBoundary=".result"
+                            [cdkDragDisabled]="character.pinned">
+          <div class="character-card-placeholder" *cdkDragPlaceholder></div>
+        </app-character-card>
+        <app-character-card *ngIf="character.pinned"
+                            [character]="character"
+                            (pinChange)="pinChange($event, i)"
+                            (lockChange)="lockChange($event, i)">
+          <div class="character-card-placeholder" *cdkDragPlaceholder></div>
+        </app-character-card>
+      </ng-container>
+    </div>
+    <div class="filters"></div>
+  </main>
 </div>

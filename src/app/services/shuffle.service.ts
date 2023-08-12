@@ -34,7 +34,6 @@ export class ShuffleService {
   private shuffleTeam(arr: ITeamMember[], locked: number[] = []): ITeamMember[] {
     for (let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      console.log(!locked.includes(arr[i].id) && !locked.includes(arr[j].id));
       if (!locked.includes(arr[i].id) && !locked.includes(arr[j].id)) {
         [arr[i], arr[j]] = [arr[j], arr[i]];
       }
