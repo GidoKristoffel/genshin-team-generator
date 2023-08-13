@@ -1,0 +1,48 @@
+@import "src/app/shared/styles/colors";
+
+:host ::ng-deep {
+  .mat-mdc-tab-labels {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .mdc-tab-indicator__content {
+    display: none;
+  }
+
+  .mat-mdc-tab.mdc-tab {
+    height: auto;
+  }
+
+  .mdc-tab {
+    box-sizing: border-box;
+    border: 1px solid rgba($white, 0);
+    border-radius: 17px;
+    background-color: rgba($white, 0.15);
+    padding: 6px 18px;
+    font-size: 14px;
+
+    & .mdc-tab__text-label {
+      line-height: 20px;
+    }
+  }
+
+  .mat-mdc-tab-labels {
+    color: rgba($white, 0.45);
+  }
+
+  & .mdc-tab--active {
+    border: 1px solid $tan;
+    color: $tan;
+
+    & svg path {
+      fill: $tan;
+      fill-opacity: 1;
+    }
+  }
+
+  & svg {
+    margin-right: 6px;
+  }
+}

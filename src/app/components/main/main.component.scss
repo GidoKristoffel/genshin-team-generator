@@ -45,10 +45,11 @@ main {
   width: 100%;
 }
 
-.filters {
+app-filters {
+  box-sizing: border-box;
   border-radius: 16px;
   background-color: #153434;
-  width: 400px;
+  padding: 16px;
   height: calc(100vh - 76px);
 }
 

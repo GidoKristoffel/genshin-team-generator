@@ -8,6 +8,9 @@ import { VideoBgComponent } from './components/video-bg/video-bg.component';
 import { CharacterCardComponent } from './components/character-card/character-card.component';
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { SwitchIconComponent } from './components/switch-icon/switch-icon.component';
+import { FiltersComponent } from './components/filters/filters.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTabsModule } from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -16,11 +19,14 @@ import { SwitchIconComponent } from './components/switch-icon/switch-icon.compon
     VideoBgComponent,
     CharacterCardComponent,
     SwitchIconComponent,
+    FiltersComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DragDropModule
+    DragDropModule,
+    MatTabsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
