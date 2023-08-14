@@ -1,0 +1,20 @@
+@import "src/app/shared/styles/colors";
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 400px;
+  height: 560px;
+  overflow: auto;
+
+  & img {
+    width: 96px;
+    height: 96px;
+  }
+
+  & .name {
+    width: 96px;
+    overflow: hidden;
+    color: $white;
+  }
+}
