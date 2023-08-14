@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./filters.component.scss']
 })
 export class FiltersComponent {
-  public tabs: string[] = ['Персонажы', 'Оружие', 'Регион'];
+  public tabs: string[] = ['Оружие', 'Регион'];
 }

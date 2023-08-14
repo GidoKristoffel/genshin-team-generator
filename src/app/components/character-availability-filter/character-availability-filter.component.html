@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <div *ngFor="let character of characters">
+    <img [src]="env.host + '/assets/img/characters/' + character.icon" alt="">
+    <div class="name">
+      <p>{{ character.name }}</p>
+    </div>
+  </div>
+</div>

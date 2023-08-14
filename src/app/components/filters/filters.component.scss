@@ -23,6 +23,7 @@
     background-color: rgba($white, 0.15);
     padding: 6px 18px;
     font-size: 14px;
+    user-select: none;
 
     & .mdc-tab__text-label {
       line-height: 20px;
