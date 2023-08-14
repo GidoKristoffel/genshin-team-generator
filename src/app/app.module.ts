@@ -11,6 +11,7 @@ import { SwitchIconComponent } from './components/switch-icon/switch-icon.compon
 import { FiltersComponent } from './components/filters/filters.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from "@angular/material/tabs";
+import { CharacterAvailabilityFilterComponent } from './components/character-availability-filter/character-availability-filter.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MatTabsModule } from "@angular/material/tabs";
     CharacterCardComponent,
     SwitchIconComponent,
     FiltersComponent,
+    CharacterAvailabilityFilterComponent,
   ],
   imports: [
     BrowserModule,
