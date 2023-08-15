@@ -47,3 +47,12 @@ export interface ITeamMember extends IMember {
   locked: boolean;
   pinned: boolean;
 }
+
+
+export interface IFilterCharacter {
+  name: string;
+  icon: string;
+  id: number;
+  quality: EQuality;
+  selected: boolean;
+}
