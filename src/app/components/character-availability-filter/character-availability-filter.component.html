@@ -1,11 +1,21 @@
-<div class="filter">
-  <div class="wrapper">
-    <div class="character" [title]="character.name" *ngFor="let character of characters">
-      <div class="icon {{ character.quality }}">
-        <img [src]="env.host + '/assets/img/characters/' + character.icon" [alt]="character.name">
-      </div>
-      <div class="name">
-        <p>{{ character.name }}</p>
+<div class="filter-wrapper">
+  <div class="buttons">
+    <button (click)="selectAll()">Select all</button>
+    <button (click)="reset()">Reset</button>
+  </div>
+  <div class="filter">
+    <div class="wrapper">
+      <div class="character"
+           [class.selected]="character.selected"
+           [title]="character.name"
+           *ngFor="let character of characters; let i = index"
+           (click)="toggleFilterCharacter(i)">
+        <div class="icon {{ character.quality }}">
+          <img [src]="env.host + '/assets/img/characters/' + character.icon" [alt]="character.name">
+        </div>
+        <div class="name">
+          <p>{{ character.name }}</p>
+        </div>
       </div>
     </div>
   </div>

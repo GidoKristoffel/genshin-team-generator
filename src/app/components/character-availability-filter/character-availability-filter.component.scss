@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   max-width: 400px;
-  height: 550px;
+  height: 503px;
   overflow-x: hidden;
   overflow-y: auto;
   text-align: center;
@@ -42,13 +42,19 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  width: 286px;
+  width: 299px;
 }
 
 .character {
+  border: 2px solid $medium-jungle-green;
   border-radius: 4px;
   background-color: $chinese-white;
   overflow: hidden;
+}
+
+.selected {
+  box-sizing: border-box;
+  border: 2px solid $white;
 }
 
 .epic {
@@ -57,4 +63,28 @@
 
 .legendary {
   background: linear-gradient(180deg, $coconut, $copper);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+
+  & button {
+    box-sizing: border-box;
+    border: 1px solid rgb(255 255 255 / 0%);
+    border-radius: 17px;
+    background-color: rgb(255 255 255 / 15%);
+    cursor: pointer;
+    padding: 6px 18px;
+    color: rgb(255 255 255 / 45%);
+    font-size: 14px;
+    user-select: none;
+  }
+}
+
+.filter-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
