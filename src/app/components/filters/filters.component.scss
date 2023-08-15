@@ -1,6 +1,10 @@
 @import "src/app/shared/styles/colors";
 
 :host ::ng-deep {
+  .mat-mdc-tab-group {
+    gap: 16px;
+  }
+
   .mat-mdc-tab-labels {
     display: flex;
     flex-direction: row;

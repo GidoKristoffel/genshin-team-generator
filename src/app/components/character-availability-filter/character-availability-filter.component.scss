@@ -1,24 +1,60 @@
 @import "src/app/shared/styles/colors";
 
-.wrapper {
+.filter {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   max-width: 400px;
-  height: 560px;
-  overflow: auto;
+  height: 550px;
+  overflow-x: hidden;
+  overflow-y: auto;
   text-align: center;
   font-family: Tahoma, Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 12px;
+  user-select: none;
 
   & img {
-    width: 96px;
-    height: 96px;
+    display: block;
+    width: 64px;
+    pointer-events: none;
   }
 
   & .name {
-    width: 96px;
+    width: 64px;
     overflow: hidden;
-    color: $white;
+    color: $dark-electric-blue;
+
+    & p {
+      margin: 0;
+      padding: 0 3px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
+}
+
+.icon {
+  border-radius: 0 0 20%;
+  overflow: hidden;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 286px;
+}
+
+.character {
+  border-radius: 4px;
+  background-color: $chinese-white;
+  overflow: hidden;
+}
+
+.epic {
+  background: linear-gradient(180deg, $purple-navy, $purple-mountain-majesty);
+}
+
+.legendary {
+  background: linear-gradient(180deg, $coconut, $copper);
 }
