@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+@import "src/app/shared/styles/colors";
 
 @font-face {
   font-family: HYWenHei;
@@ -8,6 +8,7 @@
 
 body {
   margin: 0;
+  background-color: $msu-green;
   cursor: url("https://wiki.hoyolab.com/_nuxt/img/genshin.69b4156.png"), auto;
   overflow: hidden;
 }
