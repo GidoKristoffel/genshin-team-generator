@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IMember, ITeamMember } from "../interfaces/members.interface";
 import { members } from "../../assets/members";
+import { FilterService } from "./filter.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,9 @@ export class ShuffleService {
   private travelerIds: number[] = [3, 12, 14, 66];
   public team: ITeamMember[] = [];
 
-  constructor() {
+  constructor(
+    private filterService: FilterService
+  ) {
     let randTravelerIds = this.shuffleArray(this.travelerIds);
     this.allMembers = members
       .filter((member: IMember) => !this.travelerIds.includes(member.id) || randTravelerIds[0] === member.id)
@@ -43,8 +46,9 @@ export class ShuffleService {
 
   private copyAllMembers(): ITeamMember[] {
     let randTravelerIds = this.shuffleArray(this.travelerIds);
+    const filterMembersIds = this.filterService.getFilterMembersIds();
     return this.allMembers
-      .filter((member: ITeamMember) => !this.travelerIds.includes(member.id) || randTravelerIds[0] === member.id)
+      .filter((member: ITeamMember) => (!this.travelerIds.includes(member.id) || randTravelerIds[0] === member.id) && filterMembersIds.includes(member.id))
       .map((member: ITeamMember) => ({...member, pinned: member.pinned && member.locked}));
   }
 
