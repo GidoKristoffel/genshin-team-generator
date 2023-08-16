@@ -9,7 +9,7 @@
            [class.selected]="character.selected"
            [title]="character.name"
            *ngFor="let character of characters; let i = index"
-           (click)="toggleFilterCharacter(i)">
+           (click)="toggleFilterCharacter(i, character.id)">
         <div class="icon {{ character.quality }}">
           <img [src]="env.host + '/assets/img/characters/' + character.icon" [alt]="character.name">
         </div>
