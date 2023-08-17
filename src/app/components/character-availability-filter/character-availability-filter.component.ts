@@ -28,10 +28,6 @@ export class CharacterAvailabilityFilterComponent  implements OnInit {
     });
   }
 
-  public toggleFilterCharacter(index: number, id: number): void {
-    this.filterService.updateFilterMembers([id], !this.characters[index].selected);
-  }
-
   public selectAll(): void {
     this.filterService.updateFilterMembers(
       this.characters.map((character: IFilterCharacter) => character.id),
@@ -58,16 +54,18 @@ export class CharacterAvailabilityFilterComponent  implements OnInit {
   }
 
   public mouseMove(index: number): void {
-    let ids = [];
-    if (index > this.startSelection) {
-      for (let i = this.startSelection; i < index; i++) {
-        ids.push(this.characters[i].id);
+    if (this.selection) {
+      let ids = [];
+      if (index > this.startSelection) {
+        for (let i = this.startSelection; i <= index; i++) {
+          ids.push(this.characters[i].id);
+        }
+      } else {
+        for (let i = index; i <= this.startSelection; i++) {
+          ids.push(this.characters[i].id);
+        }
       }
-    } else {
-      for (let i = index; i < this.startSelection; i++) {
-        ids.push(this.characters[i].id);
-      }
+      this.filterService.updateFilterMembers(ids, this.selectionValue);
     }
-    this.filterService.updateFilterMembers(ids, this.selectionValue);
   }
 }
