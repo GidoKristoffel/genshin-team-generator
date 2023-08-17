@@ -3,6 +3,7 @@ import { FilterService } from "../../services/filter.service";
 import { EQuality, IFilterCharacter } from "../../interfaces/members.interface";
 import { environment } from "../../../environments/environment";
 import { distinctUntilChanged } from "rxjs";
+import * as buffer from "buffer";
 
 @Component({
   selector: 'app-character-availability-filter',
@@ -12,6 +13,9 @@ import { distinctUntilChanged } from "rxjs";
 export class CharacterAvailabilityFilterComponent  implements OnInit {
   public env = environment;
   public characters: IFilterCharacter[] = [];
+  private selection: boolean = false;
+  private selectionValue: boolean = false;
+  private startSelection!: number;
   constructor(
     private filterService: FilterService
   ) {}
@@ -40,5 +44,33 @@ export class CharacterAvailabilityFilterComponent  implements OnInit {
       this.characters.map((character: IFilterCharacter) => character.id),
       false
     );
+  }
+
+  public mouseDown(index: number, value: boolean): void {
+    console.log('mouseDown');
+    this.selection = true;
+    this.startSelection = index;
+    this.selectionValue = value;
+    this.mouseMove(index);
+  }
+
+  public mouseUp(): void {
+    console.log('mouseUp');
+    this.selection = false;
+  }
+
+  public mouseMove(index: number): void {
+    console.log('mouseMove');
+    let ids = [];
+    if (index > this.startSelection) {
+      for (let i = this.startSelection; i < index; i++) {
+        ids.push(this.characters[i].id);
+      }
+    } else {
+      for (let i = index; i < this.startSelection; i++) {
+        ids.push(this.characters[i].id);
+      }
+    }
+    this.filterService.updateFilterMembers(ids, this.selectionValue);
   }
 }
