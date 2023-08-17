@@ -47,7 +47,6 @@ export class CharacterAvailabilityFilterComponent  implements OnInit {
   }
 
   public mouseDown(index: number, value: boolean): void {
-    console.log('mouseDown');
     this.selection = true;
     this.startSelection = index;
     this.selectionValue = value;
@@ -55,12 +54,10 @@ export class CharacterAvailabilityFilterComponent  implements OnInit {
   }
 
   public mouseUp(): void {
-    console.log('mouseUp');
     this.selection = false;
   }
 
   public mouseMove(index: number): void {
-    console.log('mouseMove');
     let ids = [];
     if (index > this.startSelection) {
       for (let i = this.startSelection; i < index; i++) {
