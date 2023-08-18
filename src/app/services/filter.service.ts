@@ -36,7 +36,7 @@ export class FilterService {
     );
   }
 
-  public updateFilterMembers(ids: number[], selected: boolean): void {
+  public updateFilterMembersByIds(ids: number[], selected: boolean): void {
     const temp = this.filterMembers.getValue();
     ids.forEach((id: number) => {
       const index = this.filterMembers.getValue().findIndex((member: IFilterCharacter) => member.id === id);
@@ -44,6 +44,10 @@ export class FilterService {
         temp[index].selected = selected;
       }
     });
-    this.filterMembers.next(temp);
+    this.updateFilterMembers(temp);
+  }
+
+  public updateFilterMembers(members: IFilterCharacter[]): void {
+    this.filterMembers.next(members);
   }
 }
