@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { IFilterCharacter, IMember } from "../interfaces/members.interface";
 import { members } from "../../assets/members";
 import { BehaviorSubject } from "rxjs";
+import { SharedService } from "./shared.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilterService {
   private filterMembers: BehaviorSubject<IFilterCharacter[]> = new BehaviorSubject<IFilterCharacter[]>([]);
-  constructor() {
+  constructor(
+    private sharedService: SharedService
+  ) {
     this.initFilterMembers();
   }
 
@@ -37,7 +40,7 @@ export class FilterService {
   }
 
   public updateFilterMembersByIds(ids: number[], selected: boolean): void {
-    const temp = this.filterMembers.getValue();
+    const temp = this.sharedService.copyArrayOfObjects(this.filterMembers.getValue());
     ids.forEach((id: number) => {
       const index = this.filterMembers.getValue().findIndex((member: IFilterCharacter) => member.id === id);
       if (index !== -1) {
