@@ -3,6 +3,7 @@ import { FilterService } from "../../services/filter.service";
 import { IFilterCharacter } from "../../interfaces/members.interface";
 import { environment } from "../../../environments/environment";
 import { distinctUntilChanged } from "rxjs";
+import { SharedService } from "../../services/shared.service";
 
 @Component({
   selector: 'app-character-availability-filter',
@@ -17,14 +18,15 @@ export class CharacterAvailabilityFilterComponent  implements OnInit {
   private selectionValue: boolean = false;
   private startSelection!: number;
   constructor(
-    private filterService: FilterService
+    private filterService: FilterService,
+    private sharedService: SharedService
   ) {}
 
   ngOnInit() {
     this.filterService.getFilterMembers()
       .pipe(distinctUntilChanged())
       .subscribe((filterMembers: IFilterCharacter[]) => {
-        this.characters = this.copyArrayOfObjects(filterMembers);
+        this.characters = this.sharedService.copyArrayOfObjects(filterMembers);
       });
   }
 
@@ -43,18 +45,18 @@ export class CharacterAvailabilityFilterComponent  implements OnInit {
   }
 
   public mouseDown(index: number, value: boolean): void {
-    console.log('mouseDown');
     this.selection = true;
     this.startSelection = index;
     this.selectionValue = value;
-    this.tempCharacters = this.copyArrayOfObjects(this.filterService.getFilterMembers().value);
+    this.tempCharacters = this.sharedService.copyArrayOfObjects(this.filterService.getFilterMembers().value);
     this.mouseEnter(index);
   }
 
   public mouseUp(): void {
-    console.log('mouseUp');
-    this.selection = false;
-    this.filterService.updateFilterMembers(this.characters);
+    if (this.selection) {
+      this.selection = false;
+      this.filterService.updateFilterMembers(this.characters);
+    }
   }
 
   public mouseEnter(index: number): void {
@@ -67,10 +69,6 @@ export class CharacterAvailabilityFilterComponent  implements OnInit {
         }
       }
     }
-  }
-
-  private copyArrayOfObjects<T>(arr: T[]): T[] {
-    return arr.map((obj: T) => ({...obj}))
   }
 
   public trackByFn(index: number, item: IFilterCharacter): any {
