@@ -34,7 +34,7 @@ export enum ERegion {
 }
 
 export interface IMember {
-  id: number;
+  readonly id: number;
   name: string;
   icon: string;
   quality: EQuality;
