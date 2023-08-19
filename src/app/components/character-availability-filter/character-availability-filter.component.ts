@@ -32,19 +32,17 @@ export class CharacterAvailabilityFilterComponent  implements OnInit {
 
   public selectAll(): void {
     this.filterService.updateFilterMembersByIds(
-      this.characters.map((character: IFilterCharacter) => character.id),
-      true
+      this.characters.map((character: IFilterCharacter) => character.id), true
     );
   }
 
   public reset(): void {
     this.filterService.updateFilterMembersByIds(
-      this.characters.map((character: IFilterCharacter) => character.id),
-      false
+      this.characters.map((character: IFilterCharacter) => character.id), false
     );
   }
 
-  public mouseDown(index: number, value: boolean): void {
+  public selectionStart(index: number, value: boolean): void {
     this.selection = true;
     this.startSelection = index;
     this.selectionValue = value;
@@ -52,7 +50,7 @@ export class CharacterAvailabilityFilterComponent  implements OnInit {
     this.mouseEnter(index);
   }
 
-  public mouseUp(): void {
+  public selectionEnd(): void {
     if (this.selection) {
       this.selection = false;
       this.filterService.updateFilterMembers(this.characters);
@@ -71,7 +69,7 @@ export class CharacterAvailabilityFilterComponent  implements OnInit {
     }
   }
 
-  public trackByFn(index: number, item: IFilterCharacter): any {
+  public trackByFn(index: number, item: IFilterCharacter): number {
     return item.id;
   }
 }
