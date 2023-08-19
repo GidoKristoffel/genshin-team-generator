@@ -3,15 +3,14 @@
     <button (click)="selectAll()">Select all</button>
     <button (click)="reset()">Reset</button>
   </div>
-  <div class="filter" (mouseleave)="mouseUp()">
+  <div class="filter" (mouseleave)="selectionEnd()" (mouseup)="selectionEnd()">
     <div class="wrapper">
       <div class="character"
            [class.selected]="character.selected"
            [title]="character.name"
            *ngFor="let character of characters; let i = index; trackBy: trackByFn"
-           (mousedown)="mouseDown(i, !character.selected)"
-           (mouseenter)="mouseEnter(i)"
-           (mouseup)="mouseUp()">
+           (mousedown)="selectionStart(i, !character.selected)"
+           (mouseenter)="mouseEnter(i)">
         <div class="icon {{ character.quality }}">
           <img [src]="env.host + '/assets/img/characters/' + character.icon" [alt]="character.name">
         </div>

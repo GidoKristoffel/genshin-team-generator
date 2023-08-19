@@ -25,8 +25,9 @@ export class ShuffleService {
     const filterMembersIds = this.filterService.getFilterMembersIds();
     let members = this.allMembers.filter((member: ITeamMember) => filterMembersIds.includes(member.id));
     const teamId = this.findIntersection(this.team.map((item) => item.id), this.travelerIds);
-    if (teamId.length === 1) {
-      const teamIdLock = this.team[this.team.findIndex((item) => item.id === teamId[0])].locked;
+    if (teamId.length < 2) {
+      const index = this.team.findIndex((item) => item.id === teamId[0]);
+      const teamIdLock = this.team.length && index !== -1 ? this.team[index].locked : false;
       if (!teamIdLock) {
         let tempIds = this.shuffleArray(this.findIntersection(filterMembersIds, this.travelerIds));
         members = members.filter((member: ITeamMember) => !this.travelerIds.includes(member.id) || member.id === tempIds[0]);
@@ -73,17 +74,10 @@ export class ShuffleService {
     return arr;
   }
 
-  // private copyAllMembers(): ITeamMember[] {
-  //   const filterMembersIds = this.filterService.getFilterMembersIds();
-  //   let randTravelerIds = this.shuffleArray(this.travelerIds.filter((id) => filterMembersIds.includes(id)));
-  //   return this.allMembers
-  //     .filter((member: ITeamMember) => (!this.travelerIds.includes(member.id) || randTravelerIds[0] === member.id) && filterMembersIds.includes(member.id))
-  //     .map((member: ITeamMember) => ({...member, pinned: member.pinned && member.locked}));
-  // }
-
   public updateTeamPosition(team: ITeamMember[]): void {
-    this.allMembers.splice(0, team.length, ...team);
-    console.log(this.allMembers);
+    if (this.arraysAreEqual(this.team, team)) {
+      this.team = team;
+    }
   }
 
   private findIntersection(arr1: number[], arr2: number[]): number[] {
@@ -91,4 +85,10 @@ export class ShuffleService {
     const intersection = arr2.filter(value => set1.has(value));
     return intersection;
   }
+  private arraysAreEqual(arr1: any[], arr2: any[]): boolean {
+    const a = arr1.map((a) => a.id).sort();
+    const b = arr2.map((a) => a.id).sort();
+    return a.every((value, index) => value === b[index]);
+  }
+
 }
