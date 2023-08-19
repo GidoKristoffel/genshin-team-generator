@@ -22,13 +22,8 @@ export class ShuffleService {
   }
 
   public generateRandomTeam(lockedMembers: number[]): ITeamMember[] {
-    // 1. отфильтровать, оставить только те, что выбраны в фильтре
     const filterMembersIds = this.filterService.getFilterMembersIds();
     let members = this.allMembers.filter((member: ITeamMember) => filterMembersIds.includes(member.id));
-
-    //проверить в this.team наличие путещественника. Если его нет или он locked: true, то ничего не менять, иначе из пяти версий путещественника выбрать одну и заменить текущую
-
-
     const teamId = this.findIntersection(this.team.map((item) => item.id), this.travelerIds);
     if (teamId.length === 1) {
       const teamIdLock = this.team[this.team.findIndex((item) => item.id === teamId[0])].locked;
@@ -39,8 +34,6 @@ export class ShuffleService {
         members = members.filter((member: ITeamMember) => !this.travelerIds.includes(member.id) || member.id === teamId[0]);
       }
     }
-    // 2. отсортировать с учетом заблокированных персонажей
-    // debugger;
     this.team.forEach((item: ITeamMember, index: number) => {
       if (item.locked) {
         const startIndex = index;
@@ -50,10 +43,8 @@ export class ShuffleService {
         }
       }
     });
-
     members = this.shuffleTeam(members, lockedMembers.filter((lockedMember) => filterMembersIds.includes(lockedMember)));
     this.team = members.slice(0, 4);
-    // 3. всем персонажам, что не попали в team сбросить locked и pinned
     const teamIds = this.team.map((item) => item.id);
     this.allMembers.forEach((memberItem: ITeamMember) => {
       if (!teamIds.includes(memberItem.id)) {
@@ -61,14 +52,6 @@ export class ShuffleService {
         memberItem.pinned = false;
       }
     });
-    // if (tempIds.length >= 1) {
-    //   tempIds = this.shuffleArray(tempIds);
-    //   this.team =
-    // }
-
-
-    // const members = this.copyAllMembers();
-    // this.team = this.shuffleTeam(members, lockedMembers).slice(0, 4);
     return this.team;
   }
 
@@ -90,13 +73,13 @@ export class ShuffleService {
     return arr;
   }
 
-  private copyAllMembers(): ITeamMember[] {
-    const filterMembersIds = this.filterService.getFilterMembersIds();
-    let randTravelerIds = this.shuffleArray(this.travelerIds.filter((id) => filterMembersIds.includes(id)));
-    return this.allMembers
-      .filter((member: ITeamMember) => (!this.travelerIds.includes(member.id) || randTravelerIds[0] === member.id) && filterMembersIds.includes(member.id))
-      .map((member: ITeamMember) => ({...member, pinned: member.pinned && member.locked}));
-  }
+  // private copyAllMembers(): ITeamMember[] {
+  //   const filterMembersIds = this.filterService.getFilterMembersIds();
+  //   let randTravelerIds = this.shuffleArray(this.travelerIds.filter((id) => filterMembersIds.includes(id)));
+  //   return this.allMembers
+  //     .filter((member: ITeamMember) => (!this.travelerIds.includes(member.id) || randTravelerIds[0] === member.id) && filterMembersIds.includes(member.id))
+  //     .map((member: ITeamMember) => ({...member, pinned: member.pinned && member.locked}));
+  // }
 
   public updateTeamPosition(team: ITeamMember[]): void {
     this.allMembers.splice(0, team.length, ...team);
