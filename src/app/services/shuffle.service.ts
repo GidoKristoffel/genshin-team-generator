@@ -14,15 +14,61 @@ export class ShuffleService {
   constructor(
     private filterService: FilterService
   ) {
-    let randTravelerIds = this.shuffleArray(this.travelerIds);
-    this.allMembers = members
-      .filter((member: IMember) => !this.travelerIds.includes(member.id) || randTravelerIds[0] === member.id)
-      .map((member: IMember) => ({...member, locked: false, pinned: false}));
+    this.initMembers();
+  }
+
+  private initMembers(): void {
+    this.allMembers = members.map((member: IMember) => ({...member, locked: false, pinned: false}));
   }
 
   public generateRandomTeam(lockedMembers: number[]): ITeamMember[] {
-    this.allMembers = this.copyAllMembers();
-    this.team = this.shuffleTeam(this.allMembers, lockedMembers).slice(0, 4);
+    // 1. отфильтровать, оставить только те, что выбраны в фильтре
+    const filterMembersIds = this.filterService.getFilterMembersIds();
+    let members = this.allMembers.filter((member: ITeamMember) => filterMembersIds.includes(member.id));
+
+    //проверить в this.team наличие путещественника. Если его нет или он locked: true, то ничего не менять, иначе из пяти версий путещественника выбрать одну и заменить текущую
+
+
+    const teamId = this.findIntersection(this.team.map((item) => item.id), this.travelerIds);
+    if (teamId.length === 1) {
+      const teamIdLock = this.team[this.team.findIndex((item) => item.id === teamId[0])].locked;
+      if (!teamIdLock) {
+        let tempIds = this.shuffleArray(this.findIntersection(filterMembersIds, this.travelerIds));
+        members = members.filter((member: ITeamMember) => !this.travelerIds.includes(member.id) || member.id === tempIds[0]);
+      } else {
+        members = members.filter((member: ITeamMember) => !this.travelerIds.includes(member.id) || member.id === teamId[0]);
+      }
+    }
+    // 2. отсортировать с учетом заблокированных персонажей
+    // debugger;
+    this.team.forEach((item: ITeamMember, index: number) => {
+      if (item.locked) {
+        const startIndex = index;
+        const endIndex = members.findIndex((i) => i.id === item.id);
+        if (endIndex !== -1) {
+          [members[startIndex], members[endIndex]] = [members[endIndex], members[startIndex]];
+        }
+      }
+    });
+
+    members = this.shuffleTeam(members, lockedMembers.filter((lockedMember) => filterMembersIds.includes(lockedMember)));
+    this.team = members.slice(0, 4);
+    // 3. всем персонажам, что не попали в team сбросить locked и pinned
+    const teamIds = this.team.map((item) => item.id);
+    this.allMembers.forEach((memberItem: ITeamMember) => {
+      if (!teamIds.includes(memberItem.id)) {
+        memberItem.locked = false;
+        memberItem.pinned = false;
+      }
+    });
+    // if (tempIds.length >= 1) {
+    //   tempIds = this.shuffleArray(tempIds);
+    //   this.team =
+    // }
+
+
+    // const members = this.copyAllMembers();
+    // this.team = this.shuffleTeam(members, lockedMembers).slice(0, 4);
     return this.team;
   }
 
@@ -45,8 +91,8 @@ export class ShuffleService {
   }
 
   private copyAllMembers(): ITeamMember[] {
-    let randTravelerIds = this.shuffleArray(this.travelerIds);
     const filterMembersIds = this.filterService.getFilterMembersIds();
+    let randTravelerIds = this.shuffleArray(this.travelerIds.filter((id) => filterMembersIds.includes(id)));
     return this.allMembers
       .filter((member: ITeamMember) => (!this.travelerIds.includes(member.id) || randTravelerIds[0] === member.id) && filterMembersIds.includes(member.id))
       .map((member: ITeamMember) => ({...member, pinned: member.pinned && member.locked}));
@@ -54,5 +100,12 @@ export class ShuffleService {
 
   public updateTeamPosition(team: ITeamMember[]): void {
     this.allMembers.splice(0, team.length, ...team);
+    console.log(this.allMembers);
+  }
+
+  private findIntersection(arr1: number[], arr2: number[]): number[] {
+    const set1 = new Set(arr1);
+    const intersection = arr2.filter(value => set1.has(value));
+    return intersection;
   }
 }
