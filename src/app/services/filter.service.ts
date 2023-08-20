@@ -33,7 +33,7 @@ export class FilterService {
           name: member.name,
           icon: member.icon,
           quality: member.quality,
-          selected: false,
+          selected: true,
         };
       })
     );

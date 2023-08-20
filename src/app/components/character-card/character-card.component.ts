@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { environment } from "../../../environments/environment";
 import { IMember, ITeamMember } from "../../interfaces/members.interface";
 
 @Component({
   selector: 'app-character-card',
   templateUrl: './character-card.component.html',
-  styleUrls: ['./character-card.component.scss']
+  styleUrls: ['./character-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CharacterCardComponent {
   @Input() character!: ITeamMember;
@@ -17,7 +18,7 @@ export class CharacterCardComponent {
     this.lockChange.emit(lock);
   }
 
-  public changePin(lock: boolean): void {
-    this.pinChange.emit(lock);
+  public changePin(pin: boolean): void {
+    this.pinChange.emit(pin);
   }
 }

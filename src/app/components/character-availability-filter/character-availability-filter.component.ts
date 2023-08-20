@@ -23,6 +23,10 @@ export class CharacterAvailabilityFilterComponent  implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.initCharacters();
+  }
+
+  private initCharacters(): void {
     this.filterService.getFilterMembers()
       .pipe(distinctUntilChanged())
       .subscribe((filterMembers: IFilterCharacter[]) => {
