@@ -12,6 +12,8 @@ import { FiltersComponent } from './components/filters/filters.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from "@angular/material/tabs";
 import { CharacterAvailabilityFilterComponent } from './components/character-availability-filter/character-availability-filter.component';
+import { AngularSvgIconModule } from "angular-svg-icon";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { CharacterAvailabilityFilterComponent } from './components/character-ava
     DragDropModule,
     MatTabsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    AngularSvgIconModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

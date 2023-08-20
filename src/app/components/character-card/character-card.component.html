@@ -1,33 +1,30 @@
 <div class="card">
-  <div class="card-settings">
+  <div class="settings">
     <app-switch-icon defaultIcon="assets/img/unlock.svg"
                      switchedIcon="assets/img/lock.svg"
-                     [isSwitched]="character.locked"
+                     [switched]="character.locked"
                      (change)="changeLock($event)"
     ></app-switch-icon>
     <app-switch-icon defaultIcon="assets/img/pin.svg"
                      switchedIcon="assets/img/active_pin.svg"
-                     [isSwitched]="character.pinned"
+                     [switched]="character.pinned"
                      (change)="changePin($event)"
     ></app-switch-icon>
   </div>
   <div class="avatar">
-    <img alt="element"
-         class="element"
+    <img class="element"
          draggable="false"
          [src]="env.host + '/assets/img/' + character.elementalType + '.png'">
     <div class="icon-wrapper {{ character.quality }}">
       <img class="icon-bg"
            draggable="false"
-           [src]="env.host + '/assets/img/genshin_avatar_bg.fe7b136.png'">
+           [src]="env.host + '/assets/img/avatar-bg.png'">
       <img class="icon"
            decoding="async"
            draggable="false"
            [src]="env.host + '/assets/img/characters/' + character.icon">
     </div>
   </div>
-  <div class="name">
-    <span>{{ character.name }}</span>
-  </div>
+  <div class="name">{{ character.name }}</div>
 </div>
 <ng-content></ng-content>

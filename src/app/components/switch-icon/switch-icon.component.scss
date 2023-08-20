@@ -6,6 +6,7 @@
 
   box-sizing: border-box;
   border-radius: 5px;
+  background-color: $bone;
   width: 24px;
   height: 24px;
 
@@ -13,10 +14,6 @@
     width: 20px;
     height: 20px;
   }
-}
-
-.default {
-  background-color: $bone;
 }
 
 .switched {

@@ -18,7 +18,7 @@ export class MainComponent {
   ) {}
 
   public generateRandomTeam(): void {
-    const lockedMembers = this.team.filter((member) => member.locked).map((member) => member.id);
+    const lockedMembers = this.team.filter((member: ITeamMember) => member.locked).map((member: ITeamMember) => member.id);
     this.team = this.shuffleService.generateRandomTeam(lockedMembers);
   }
 
