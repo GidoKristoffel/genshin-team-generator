@@ -3,6 +3,8 @@ import {
   CharacterAvailabilityFilterComponent
 } from "../character-availability-filter/character-availability-filter.component";
 import { IFilterTab } from "../../interfaces/filters.interface";
+import { WeaponFilterComponent } from "../weapon-filter/weapon-filter.component";
+import { RegionFilterComponent } from "../region-filter/region-filter.component";
 
 @Component({
   selector: 'app-filters',
@@ -16,9 +18,9 @@ export class FiltersComponent {
     content: CharacterAvailabilityFilterComponent,
   }, {
     title: 'Оружие',
-    content: null,
+    content: WeaponFilterComponent,
   }, {
     title: 'Регион',
-    content: null,
+    content: RegionFilterComponent,
   }];
 }
