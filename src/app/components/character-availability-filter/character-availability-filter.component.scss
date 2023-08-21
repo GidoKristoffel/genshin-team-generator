@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   max-width: 400px;
-  height: 503px;
+  height: calc(100vh - 204px);
   overflow-x: hidden;
   overflow-y: auto;
   text-align: center;
