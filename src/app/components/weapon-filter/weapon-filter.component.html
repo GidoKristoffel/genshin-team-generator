@@ -1,1 +1,5 @@
-<p>weapon-filter works!</p>
+<div class="filter">
+  <div class="item" [class.selected]="filter.selected" *ngFor="let filter of filters; let index = index" (click)="toggleFilter(filter.id, index)">
+    {{ filter.title }}
+  </div>
+</div>

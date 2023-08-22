@@ -1,0 +1,11 @@
+.filter {
+  color: white;
+
+  & .item {
+    border: 1px solid #af6d6d;
+  }
+
+  & .selected {
+    border-color: white;
+  }
+}
