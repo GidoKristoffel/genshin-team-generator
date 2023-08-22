@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-
-interface IWeaponFilter {
-  id: number;
-  src: string;
-  title: string;
-}
+import { IWeaponFilter } from "../interfaces/filters.interface";
 
 @Injectable({
   providedIn: 'root'

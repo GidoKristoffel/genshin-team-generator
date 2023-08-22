@@ -9,3 +9,13 @@ export interface IFilterTab {
   title: string;
   content: Type<CharacterAvailabilityFilterComponent | WeaponFilterComponent | RegionFilterComponent> | null;
 }
+
+export interface IWeaponFilter {
+  id: number;
+  src: string;
+  title: string;
+}
+
+export interface IWeaponFilterSelect extends IWeaponFilter {
+  selected: boolean;
+}
