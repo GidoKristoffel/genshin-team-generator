@@ -19,3 +19,13 @@ export interface IWeaponFilter {
 export interface IWeaponFilterSelect extends IWeaponFilter {
   selected: boolean;
 }
+
+export interface IRegionFilter {
+  id: number;
+  src: string;
+  title: string;
+}
+
+export interface IRegionFilterSelect extends IRegionFilter {
+  selected: boolean;
+}
