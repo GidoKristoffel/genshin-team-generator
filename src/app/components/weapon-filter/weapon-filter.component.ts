@@ -19,7 +19,7 @@ export class WeaponFilterComponent implements OnInit {
   }
 
   private initFilter(): void {
-    this.filters = this.weaponFilterService.get().map((filter) => ({ ... filter, selected: false }));
+    this.filters = this.weaponFilterService.get().map((filter) => ({ ... filter, selected: true }));
   }
 
   public toggleFilter(id: number, index: number): void {

@@ -72,9 +72,9 @@
 
   & button {
     box-sizing: border-box;
-    border: 1px solid rgb(255 255 255 / 0%);
+    border: 1px solid rgb($white, 0);
     border-radius: 17px;
-    background-color: rgb(255 255 255 / 15%);
+    background-color: rgb($white, 0.15);
     cursor: pointer;
     padding: 6px 18px;
     color: rgb(255 255 255 / 45%);

@@ -7,27 +7,27 @@ import { IWeaponFilter } from "../interfaces/filters.interface";
 export class WeaponFilterService {
   private weaponFilters: IWeaponFilter[] = [{
     id: 1,
-    src: '',
+    src: 'assets/img/weapons/sword.webp',
     title: 'Sword',
   }, {
     id: 2,
-    src: '',
+    src: 'assets/img/weapons/claymore.webp',
     title: 'Claymore',
   }, {
     id: 3,
-    src: '',
+    src: 'assets/img/weapons/bow.webp',
     title: 'Bow',
   }, {
     id: 4,
-    src: '',
+    src: 'assets/img/weapons/catalyst.webp',
     title: 'Catalyst',
   }, {
     id: 5,
-    src: '',
+    src: 'assets/img/weapons/polearm.webp',
     title: 'Polearm',
   }];
 
-  private selectedWeapons: number[] = [];
+  private selectedWeapons: number[] = [1, 2, 3, 4, 5];
 
   constructor() { }
 
