@@ -27,35 +27,35 @@ export const weapons = [
 export const regions: IRegionFilter[] = [
   {
     id: 1,
-    src: '',
+    src: 'assets/img/regions/mondstadt.webp',
     title: 'Mondstadt'
   }, {
     id: 2,
-    src: '',
+    src: 'assets/img/regions/liyue.webp',
     title: 'Liyue'
   }, {
     id: 3,
-    src: '',
+    src: 'assets/img/regions/inazuma.webp',
     title: 'Inazuma'
   }, {
     id: 4,
-    src: '',
+    src: 'assets/img/regions/sumeru.webp',
     title: 'Sumeru'
   }, {
     id: 5,
-    src: '',
+    src: 'assets/img/regions/fontaine.webp',
     title: 'Fontaine'
   }, {
     id: 6,
-    src: '',
+    src: 'assets/img/regions/unknown.webp',
     title: 'Natlan'
   }, {
     id: 7,
-    src: '',
+    src: 'assets/img/regions/unknown.webp',
     title: 'Snezhnaya'
   }, {
     id: 8,
-    src: '',
+    src: 'assets/img/regions/unknown.webp',
     title: 'Other'
   }
 ];
