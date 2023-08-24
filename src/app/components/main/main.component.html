@@ -14,21 +14,23 @@
          cdkDropListLockAxis="x"
          (cdkDropListDropped)="onDrop($event)">
       <ng-container *ngFor="let character of team; let i = index">
-        <app-character-card *ngIf="!character.pinned"
-                            [character]="character"
-                            (pinChange)="pinChange($event, i)"
-                            (lockChange)="lockChange($event, i)"
-                            cdkDrag
-                            cdkDragBoundary=".result"
-                            [cdkDragDisabled]="character.pinned">
-          <div class="character-card-placeholder" *cdkDragPlaceholder></div>
-        </app-character-card>
-        <app-character-card *ngIf="character.pinned"
-                            [character]="character"
-                            (pinChange)="pinChange($event, i)"
-                            (lockChange)="lockChange($event, i)">
-          <div class="character-card-placeholder" *cdkDragPlaceholder></div>
-        </app-character-card>
+        <ng-container *ngIf="character">
+          <app-character-card *ngIf="!character.pinned"
+                              [character]="character"
+                              (pinChange)="pinChange($event, i)"
+                              (lockChange)="lockChange($event, i)"
+                              cdkDrag
+                              cdkDragBoundary=".result"
+                              [cdkDragDisabled]="character.pinned">
+            <div class="character-card-placeholder" *cdkDragPlaceholder></div>
+          </app-character-card>
+          <app-character-card *ngIf="character.pinned"
+                              [character]="character"
+                              (pinChange)="pinChange($event, i)"
+                              (lockChange)="lockChange($event, i)">
+            <div class="character-card-placeholder" *cdkDragPlaceholder></div>
+          </app-character-card>
+        </ng-container>
       </ng-container>
     </div>
     <app-filters></app-filters>

@@ -48,6 +48,8 @@ export interface ITeamMember extends IMember {
   pinned: boolean;
 }
 
+export type TTeam = [ITeamMember | null, ITeamMember | null, ITeamMember | null, ITeamMember | null];
+
 
 export interface IFilterCharacter {
   name: string;
