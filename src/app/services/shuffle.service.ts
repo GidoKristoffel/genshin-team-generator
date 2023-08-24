@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { IMember, ITeamMember } from "../interfaces/members.interface";
+import { IMember, ITeamMember, TTeam } from "../interfaces/members.interface";
 import { members } from "../../assets/members";
 import { FilterService } from "./filter.service";
+import { TeamService } from "./team.service";
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +10,11 @@ import { FilterService } from "./filter.service";
 export class ShuffleService {
   private allMembers: ITeamMember[] = [];
   private travelerIds: number[] = [3, 12, 14, 66];
-  public team: ITeamMember[] = [];
+  public team: TTeam = [null, null, null, null];
 
   constructor(
-    private filterService: FilterService
+    private filterService: FilterService,
+    private teamService: TeamService,
   ) {
     this.initMembers();
   }
@@ -21,13 +23,14 @@ export class ShuffleService {
     this.allMembers = members.map((member: IMember) => ({...member, locked: false, pinned: false}));
   }
 
-  public generateRandomTeam(lockedMembers: number[]): ITeamMember[] {
+  public generateRandomTeam(): void {
+    const lockedMembers: number[] = this.teamService.getLockedMembers();
     const filterMembersIds = this.filterService.getFilterMembersIds();
     let members = this.allMembers.filter((member: ITeamMember) => filterMembersIds.includes(member.id));
-    const teamId = this.findIntersection(this.team.map((item) => item.id), this.travelerIds);
+    const teamId = this.findIntersection(this.team.map((item: ITeamMember | null) => item ? item.id : -1), this.travelerIds);
     if (teamId.length < 2) {
-      const index = this.team.findIndex((item) => item.id === teamId[0]);
-      const teamIdLock = this.team.length && index !== -1 ? this.team[index].locked : false;
+      const index = this.team.findIndex((item: ITeamMember | null) => item && item.id === teamId[0]);
+      const teamIdLock = this.team.length && index !== -1 && this.team[index] ? this.team[index]?.locked : false;
       if (!teamIdLock) {
         let tempIds = this.shuffleArray(this.findIntersection(filterMembersIds, this.travelerIds));
         members = members.filter((member: ITeamMember) => !this.travelerIds.includes(member.id) || member.id === tempIds[0]);
@@ -35,25 +38,11 @@ export class ShuffleService {
         members = members.filter((member: ITeamMember) => !this.travelerIds.includes(member.id) || member.id === teamId[0]);
       }
     }
-    this.team.forEach((item: ITeamMember, index: number) => {
-      if (item.locked) {
-        const startIndex = index;
-        const endIndex = members.findIndex((i) => i.id === item.id);
-        if (endIndex !== -1) {
-          [members[startIndex], members[endIndex]] = [members[endIndex], members[startIndex]];
-        }
-      }
-    });
+    this.saveLockedMembersPosition(members);
     members = this.shuffleTeam(members, lockedMembers.filter((lockedMember) => filterMembersIds.includes(lockedMember)));
-    this.team = members.slice(0, 4);
-    const teamIds = this.team.map((item) => item.id);
-    this.allMembers.forEach((memberItem: ITeamMember) => {
-      if (!teamIds.includes(memberItem.id)) {
-        memberItem.locked = false;
-        memberItem.pinned = false;
-      }
-    });
-    return this.team;
+    this.team = [members[0], members[1], members[2], members[3]];
+    this.resetMembersSettings();
+    this.teamService.update(this.team);
   }
 
   private shuffleArray<T>(arr: T[]): T[] {
@@ -74,9 +63,10 @@ export class ShuffleService {
     return arr;
   }
 
-  public updateTeamPosition(team: ITeamMember[]): void {
+  public updateTeamPosition(team: TTeam): void {
     if (this.arraysAreEqual(this.team, team)) {
       this.team = team;
+      this.teamService.update(team);
     }
   }
 
@@ -91,4 +81,30 @@ export class ShuffleService {
     return a.every((value, index) => value === b[index]);
   }
 
+
+  private saveLockedMembersPosition(members: ITeamMember[]): void {
+    this.team.forEach((item: ITeamMember | null, index: number) => {
+      if (item && item.locked) {
+        const startIndex = index;
+        const endIndex = members.findIndex((i: ITeamMember) => i.id === item.id);
+        if (endIndex !== -1) {
+          [members[startIndex], members[endIndex]] = [members[endIndex], members[startIndex]];
+        }
+      }
+    });
+  }
+  private resetMembersSettings(): void {
+    const teamIds: number[] = [];
+    this.team.forEach((member: ITeamMember | null) => {
+      if (member) {
+        teamIds.push(member.id);
+      }
+    });
+    this.allMembers.forEach((memberItem: ITeamMember) => {
+      if (!teamIds.includes(memberItem.id)) {
+        memberItem.locked = false;
+        memberItem.pinned = false;
+      }
+    });
+  }
 }
