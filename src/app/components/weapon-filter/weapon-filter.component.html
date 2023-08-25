@@ -1,5 +1,8 @@
 <div class="filter">
-  <div class="item" [class.selected]="filter.selected" *ngFor="let filter of filters; let index = index" (click)="toggleFilter(filter.id, index)">
+  <div class="item"
+       [class.selected]="filter.selected"
+       *ngFor="let filter of filters; let index = index"
+       (click)="toggleFilter(filter.id, index)">
     <img [src]="filter.src">
   </div>
 </div>

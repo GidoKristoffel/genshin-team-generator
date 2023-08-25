@@ -47,4 +47,14 @@ export class TeamService {
 
     return lockedMembers;
   }
+
+  public getIds(): number[] {
+    const teamIds: number[] = [];
+    this.get().forEach((member: ITeamMember | null) => {
+      if (member) {
+        teamIds.push(member.id);
+      }
+    });
+    return teamIds;
+  }
 }
