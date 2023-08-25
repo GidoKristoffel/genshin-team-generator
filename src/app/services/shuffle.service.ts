@@ -9,7 +9,7 @@ import { TeamService } from "./team.service";
 })
 export class ShuffleService {
   private allMembers: ITeamMember[] = [];
-  private travelerIds: number[] = [3, 12, 14, 66];
+  private travelerIds: number[] = [2, 11, 13, 63];
 
 
   constructor(
@@ -25,21 +25,11 @@ export class ShuffleService {
 
   public generateRandomTeam(): void {
     const lockedMembers: number[] = this.teamService.getLockedMembers();
-    const filterMembersIds = this.filterService.getFilterMembersIds();
-    let members = this.allMembers.filter((member: ITeamMember) => filterMembersIds.includes(member.id));
-    const teamId = this.findIntersection(this.teamService.get().map((item: ITeamMember | null) => item ? item.id : -1), this.travelerIds);
-    if (teamId.length < 2) {
-      const index = this.teamService.get().findIndex((item: ITeamMember | null) => item && item.id === teamId[0]);
-      const teamIdLock = this.teamService.get().length && index !== -1 && this.teamService.get()[index] ? this.teamService.get()[index]?.locked : false;
-      if (!teamIdLock) {
-        let tempIds = this.shuffleArray(this.findIntersection(filterMembersIds, this.travelerIds));
-        members = members.filter((member: ITeamMember) => !this.travelerIds.includes(member.id) || member.id === tempIds[0]);
-      } else {
-        members = members.filter((member: ITeamMember) => !this.travelerIds.includes(member.id) || member.id === teamId[0]);
-      }
-    }
+    const filterMembersIds: number[] = this.filterService.getFilterMembersIds();
+    let members: ITeamMember[] = this.allMembers.filter((member: ITeamMember) => filterMembersIds.includes(member.id));
+    members = this.sortTravelers(members);
     this.saveLockedMembersPosition(members);
-    members = this.shuffleTeam(members, lockedMembers.filter((lockedMember) => filterMembersIds.includes(lockedMember)));
+    members = this.shuffleTeam(members, lockedMembers.filter((lockedMember: number) => filterMembersIds.includes(lockedMember)));
     this.resetMembersSettings();
     this.teamService.update([members[0], members[1], members[2], members[3]]);
   }
@@ -77,6 +67,20 @@ export class ShuffleService {
     const a = arr1.map((a) => a.id).sort();
     const b = arr2.map((a) => a.id).sort();
     return a.every((value, index) => value === b[index]);
+  }
+
+  private sortTravelers(members: ITeamMember[]): ITeamMember[] {
+    const filterMembersIds: number[] = this.filterService.getFilterMembersIds();
+    const teamId = this.findIntersection(this.teamService.getIds(), this.travelerIds);
+    const index = this.teamService.get().findIndex((item: ITeamMember | null) => item && item.id === teamId[0]);
+    const teamIdLock = this.teamService.get().length && index !== -1 && this.teamService.get()[index] ? this.teamService.get()[index]?.locked : false;
+    if (!teamIdLock) {
+      let tempIds = this.shuffleArray(this.findIntersection(filterMembersIds, this.travelerIds));
+      members = members.filter((member: ITeamMember) => !this.travelerIds.includes(member.id) || member.id === tempIds[0]);
+    } else {
+      members = members.filter((member: ITeamMember) => !this.travelerIds.includes(member.id) || member.id === teamId[0]);
+    }
+    return members;
   }
 
 
