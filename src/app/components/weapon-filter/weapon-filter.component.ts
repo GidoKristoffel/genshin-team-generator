@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeaponFilterService } from "../../services/weapon-filter.service";
-import { IWeaponFilterSelect } from "../../interfaces/filters.interface";
+import { IWeaponFilter, IWeaponFilterSelect } from "../../interfaces/filters.interface";
 
 @Component({
   selector: 'app-weapon-filter',
@@ -19,7 +19,7 @@ export class WeaponFilterComponent implements OnInit {
   }
 
   private initFilter(): void {
-    this.filters = this.weaponFilterService.get().map((filter) => ({ ... filter, selected: true }));
+    this.filters = this.weaponFilterService.get().map((filter: IWeaponFilter) => ({ ... filter, selected: true }));
   }
 
   public toggleFilter(id: number, index: number): void {
