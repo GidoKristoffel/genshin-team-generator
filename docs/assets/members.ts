@@ -1,0 +1,669 @@
+import { EElementalType, EGroup, EQuality, ERegion, EWeapon, IMember } from "../app/interfaces/members.interface";
+
+export const members: IMember[] = [{
+  id: 0,
+  groupId: EGroup.Default,
+  name: "Аль-Хайтам",
+  icon: "alhaitham.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Dendro,
+  weapon: EWeapon.Sword,
+  region: ERegion.Sumeru
+}, {
+  id: 1,
+  groupId: EGroup.Default,
+  name: "Альбедо",
+  icon: "albedo.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Geo,
+  weapon: EWeapon.Sword,
+  region: ERegion.Mondstadt
+}, {
+  id: 2,
+  groupId: EGroup.Traveler,
+  name: "Анемо путешественник",
+  icon: "traveler.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Anemo,
+  weapon: EWeapon.Sword,
+  region: ERegion.Other
+}, {
+  id: 3,
+  groupId: EGroup.Default,
+  name: "Аяка",
+  icon: "ayaka.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Cryo,
+  weapon: EWeapon.Sword,
+  region: ERegion.Inazuma
+}, {
+  id: 4,
+  groupId: EGroup.Default,
+  name: "Аято",
+  icon: "ayato.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Hydro,
+  weapon: EWeapon.Sword,
+  region: ERegion.Inazuma
+}, {
+  id: 5,
+  groupId: EGroup.Default,
+  name: "Бай Чжу",
+  icon: "baizhu.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Dendro,
+  weapon: EWeapon.Catalyst,
+  region: ERegion.Liyue
+}, {
+  id: 6,
+  groupId: EGroup.Default,
+  name: "Барбара",
+  icon: "barbara.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Hydro,
+  weapon: EWeapon.Catalyst,
+  region: ERegion.Mondstadt
+}, {
+  id: 7,
+  groupId: EGroup.Default,
+  name: "Беннет",
+  icon: "bennett.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Pyro,
+  weapon: EWeapon.Sword,
+  region: ERegion.Mondstadt
+}, {
+  id: 8,
+  groupId: EGroup.Default,
+  name: "Бэй Доу",
+  icon: "beidou.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Electro,
+  weapon: EWeapon.Claymore,
+  region: ERegion.Liyue
+}, {
+  id: 9,
+  groupId: EGroup.Default,
+  name: "Венти",
+  icon: "venti.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Anemo,
+  weapon: EWeapon.Bow,
+  region: ERegion.Mondstadt
+}, {
+  id: 10,
+  groupId: EGroup.Default,
+  name: "Гань Юй",
+  icon: "ganyu.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Cryo,
+  weapon: EWeapon.Bow,
+  region: ERegion.Liyue
+}, {
+  id: 11,
+  groupId: EGroup.Traveler,
+  name: "Гео путешественник",
+  icon: "traveler.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Geo,
+  weapon: EWeapon.Sword,
+  region: ERegion.Other
+}, {
+  id: 12,
+  groupId: EGroup.Default,
+  name: "Горо",
+  icon: "gorou.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Geo,
+  weapon: EWeapon.Bow,
+  region: ERegion.Inazuma
+}, {
+  id: 13,
+  groupId: EGroup.Traveler,
+  name: "Дендро путешественник",
+  icon: "traveler.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Dendro,
+  weapon: EWeapon.Sword,
+  region: ERegion.Other
+}, {
+  id: 14,
+  groupId: EGroup.Default,
+  name: "Джинн",
+  icon: "jean.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Anemo,
+  weapon: EWeapon.Sword,
+  region: ERegion.Mondstadt
+}, {
+  id: 15,
+  groupId: EGroup.Default,
+  name: "Дилюк",
+  icon: "diluc.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Pyro,
+  weapon: EWeapon.Claymore,
+  region: ERegion.Mondstadt
+}, {
+  id: 16,
+  groupId: EGroup.Default,
+  name: "Диона",
+  icon: "diona.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Cryo,
+  weapon: EWeapon.Bow,
+  region: ERegion.Mondstadt
+}, {
+  id: 17,
+  groupId: EGroup.Default,
+  name: "Дори",
+  icon: "dori.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Electro,
+  weapon: EWeapon.Claymore,
+  region: ERegion.Sumeru
+}, {
+  id: 18,
+  groupId: EGroup.Default,
+  name: "Дэхья",
+  icon: "dehya.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Pyro,
+  weapon: EWeapon.Claymore,
+  region: ERegion.Sumeru
+}, {
+  id: 19,
+  groupId: EGroup.Default,
+  name: "Е Лань",
+  icon: "yelan.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Hydro,
+  weapon: EWeapon.Bow,
+  region: ERegion.Liyue
+}, {
+  id: 20,
+  groupId: EGroup.Default,
+  name: "Ёимия",
+  icon: "yoimiya.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Pyro,
+  weapon: EWeapon.Bow,
+  region: ERegion.Inazuma
+}, {
+  id: 21,
+  groupId: EGroup.Default,
+  name: "Итто",
+  icon: "itto.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Geo,
+  weapon: EWeapon.Claymore,
+  region: ERegion.Inazuma
+}, {
+  id: 22,
+  groupId: EGroup.Default,
+  name: "Кавех",
+  icon: "kaveh.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Dendro,
+  weapon: EWeapon.Claymore,
+  region: ERegion.Sumeru
+}, {
+  id: 23,
+  groupId: EGroup.Default,
+  name: "Кадзуха",
+  icon: "kazuha.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Anemo,
+  weapon: EWeapon.Sword,
+  region: ERegion.Inazuma
+}, {
+  id: 24,
+  groupId: EGroup.Default,
+  name: "Кандакия",
+  icon: "candace.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Hydro,
+  weapon: EWeapon.Polearm,
+  region: ERegion.Sumeru
+}, {
+  id: 25,
+  groupId: EGroup.Default,
+  name: "Кирара",
+  icon: "kirara.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Dendro,
+  weapon: EWeapon.Sword,
+  region: ERegion.Inazuma
+}, {
+  id: 26,
+  groupId: EGroup.Default,
+  name: "Кли",
+  icon: "klee.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Pyro,
+  weapon: EWeapon.Catalyst,
+  region: ERegion.Mondstadt
+}, {
+  id: 27,
+  groupId: EGroup.Default,
+  name: "Кокоми",
+  icon: "kokomi.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Hydro,
+  weapon: EWeapon.Catalyst,
+  region: ERegion.Inazuma
+}, {
+  id: 28,
+  groupId: EGroup.Default,
+  name: "Коллеи",
+  icon: "collei.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Dendro,
+  weapon: EWeapon.Bow,
+  region: ERegion.Sumeru
+}, {
+  id: 29,
+  groupId: EGroup.Default,
+  name: "Кэ Цин",
+  icon: "keqing.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Electro,
+  weapon: EWeapon.Sword,
+  region: ERegion.Liyue
+}, {
+  id: 30,
+  groupId: EGroup.Default,
+  name: "Кэйа",
+  icon: "kaeya.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Cryo,
+  weapon: EWeapon.Sword,
+  region: ERegion.Mondstadt
+}, {
+  id: 31,
+  groupId: EGroup.Default,
+  name: "Лайла",
+  icon: "layla.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Cryo,
+  weapon: EWeapon.Sword,
+  region: ERegion.Sumeru
+}, {
+  id: 32,
+  groupId: EGroup.Default,
+  name: "Лиза",
+  icon: "lisa.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Electro,
+  weapon: EWeapon.Catalyst,
+  region: ERegion.Mondstadt
+}, {
+  id: 33,
+  groupId: EGroup.Default,
+  name: "Мика",
+  icon: "mika.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Cryo,
+  weapon: EWeapon.Polearm,
+  region: ERegion.Mondstadt
+}, {
+  id: 34,
+  groupId: EGroup.Default,
+  name: "Мона",
+  icon: "mona.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Hydro,
+  weapon: EWeapon.Catalyst,
+  region: ERegion.Mondstadt
+}, {
+  id: 35,
+  groupId: EGroup.Default,
+  name: "Нахида",
+  icon: "nahida.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Dendro,
+  weapon: EWeapon.Catalyst,
+  region: ERegion.Sumeru
+}, {
+  id: 36,
+  groupId: EGroup.Default,
+  name: "Нилу",
+  icon: "nilou.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Hydro,
+  weapon: EWeapon.Sword,
+  region: ERegion.Sumeru
+}, {
+  id: 37,
+  groupId: EGroup.Default,
+  name: "Нин Гуан",
+  icon: "ningguang.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Geo,
+  weapon: EWeapon.Catalyst,
+  region: ERegion.Liyue
+}, {
+  id: 38,
+  groupId: EGroup.Default,
+  name: "Ноэлль",
+  icon: "noelle.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Geo,
+  weapon: EWeapon.Claymore,
+  region: ERegion.Mondstadt
+}, {
+  id: 39,
+  groupId: EGroup.Default,
+  name: "Райдэн",
+  icon: "raiden.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Electro,
+  weapon: EWeapon.Polearm,
+  region: ERegion.Inazuma
+}, {
+  id: 40,
+  groupId: EGroup.Default,
+  name: "Розария",
+  icon: "rosaria.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Cryo,
+  weapon: EWeapon.Polearm,
+  region: ERegion.Mondstadt
+}, {
+  id: 41,
+  groupId: EGroup.Default,
+  name: "Рэйзор",
+  icon: "razor.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Electro,
+  weapon: EWeapon.Claymore,
+  region: ERegion.Mondstadt
+}, {
+  id: 42,
+  groupId: EGroup.Default,
+  name: "Сайно",
+  icon: "cyno.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Electro,
+  weapon: EWeapon.Polearm,
+  region: ERegion.Sumeru
+}, {
+  id: 43,
+  groupId: EGroup.Default,
+  name: "Сара",
+  icon: "sara.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Electro,
+  weapon: EWeapon.Bow,
+  region: ERegion.Inazuma
+}, {
+  id: 44,
+  groupId: EGroup.Default,
+  name: "Сахароза",
+  icon: "sucrose.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Anemo,
+  weapon: EWeapon.Catalyst,
+  region: ERegion.Mondstadt
+}, {
+  id: 45,
+  groupId: EGroup.Default,
+  name: "Саю",
+  icon: "sayu.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Anemo,
+  weapon: EWeapon.Claymore,
+  region: ERegion.Inazuma
+}, {
+  id: 46,
+  groupId: EGroup.Default,
+  name: "Син Цю",
+  icon: "xingqiu.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Hydro,
+  weapon: EWeapon.Sword,
+  region: ERegion.Liyue
+}, {
+  id: 47,
+  groupId: EGroup.Default,
+  name: "Синобу",
+  icon: "shinobu.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Electro,
+  weapon: EWeapon.Sword,
+  region: ERegion.Inazuma
+}, {
+  id: 48,
+  groupId: EGroup.Default,
+  name: "Синь Янь",
+  icon: "xinyan.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Pyro,
+  weapon: EWeapon.Claymore,
+  region: ERegion.Liyue
+}, {
+  id: 49,
+  groupId: EGroup.Default,
+  name: "Странник",
+  icon: "wanderer.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Anemo,
+  weapon: EWeapon.Catalyst,
+  region: ERegion.Other
+}, {
+  id: 50,
+  groupId: EGroup.Default,
+  name: "Сян Лин",
+  icon: "xiangling.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Pyro,
+  weapon: EWeapon.Polearm,
+  region: ERegion.Liyue
+}, {
+  id: 51,
+  groupId: EGroup.Default,
+  name: "Сяо",
+  icon: "xiao.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Anemo,
+  weapon: EWeapon.Polearm,
+  region: ERegion.Liyue
+}, {
+  id: 52,
+  groupId: EGroup.Default,
+  name: "Тарталья",
+  icon: "tartaglia.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Hydro,
+  weapon: EWeapon.Bow,
+  region: ERegion.Snezhnaya
+}, {
+  id: 53,
+  groupId: EGroup.Default,
+  name: "Тигнари",
+  icon: "tighnari.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Dendro,
+  weapon: EWeapon.Bow,
+  region: ERegion.Sumeru
+}, {
+  id: 54,
+  groupId: EGroup.Default,
+  name: "Тома",
+  icon: "thoma.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Pyro,
+  weapon: EWeapon.Polearm,
+  region: ERegion.Inazuma
+}, {
+  id: 55,
+  groupId: EGroup.Default,
+  name: "Фарузан",
+  icon: "faruzan.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Anemo,
+  weapon: EWeapon.Bow,
+  region: ERegion.Sumeru
+}, {
+  id: 56,
+  groupId: EGroup.Default,
+  name: "Фишль",
+  icon: "fischl.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Electro,
+  weapon: EWeapon.Bow,
+  region: ERegion.Mondstadt
+}, {
+  id: 57,
+  groupId: EGroup.Default,
+  name: "Ху Тао",
+  icon: "hu-tao.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Pyro,
+  weapon: EWeapon.Polearm,
+  region: ERegion.Liyue
+}, {
+  id: 58,
+  groupId: EGroup.Default,
+  name: "Хэйдзо",
+  icon: "heizou.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Anemo,
+  weapon: EWeapon.Catalyst,
+  region: ERegion.Inazuma
+}, {
+  id: 59,
+  groupId: EGroup.Default,
+  name: "Ци Ци",
+  icon: "qiqi.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Cryo,
+  weapon: EWeapon.Sword,
+  region: ERegion.Liyue
+}, {
+  id: 60,
+  groupId: EGroup.Default,
+  name: "Чжун Ли",
+  icon: "zhongli.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Geo,
+  weapon: EWeapon.Polearm,
+  region: ERegion.Liyue
+}, {
+  id: 61,
+  groupId: EGroup.Default,
+  name: "Чун Юнь",
+  icon: "chongyun.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Cryo,
+  weapon: EWeapon.Claymore,
+  region: ERegion.Liyue
+}, {
+  id: 62,
+  groupId: EGroup.Default,
+  name: "Шэнь Хэ",
+  icon: "shenhe.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Cryo,
+  weapon: EWeapon.Polearm,
+  region: ERegion.Liyue
+}, {
+  id: 63,
+  groupId: EGroup.Traveler,
+  name: "Электро путешественник",
+  icon: "traveler.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Electro,
+  weapon: EWeapon.Sword,
+  region: ERegion.Other
+}, {
+  id: 64,
+  groupId: EGroup.Default,
+  name: "Элой",
+  icon: "aloy.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Cryo,
+  weapon: EWeapon.Bow,
+  region: ERegion.Other
+}, {
+  id: 65,
+  groupId: EGroup.Default,
+  name: "Эмбер",
+  icon: "amber.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Pyro,
+  weapon: EWeapon.Bow,
+  region: ERegion.Mondstadt
+}, {
+  id: 66,
+  groupId: EGroup.Default,
+  name: "Эола",
+  icon: "eula.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Cryo,
+  weapon: EWeapon.Claymore,
+  region: ERegion.Mondstadt
+}, {
+  id: 67,
+  groupId: EGroup.Default,
+  name: "Юнь Цзинь",
+  icon: "yun-jin.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Geo,
+  weapon: EWeapon.Polearm,
+  region: ERegion.Liyue
+}, {
+  id: 68,
+  groupId: EGroup.Default,
+  name: "Янь Фэй",
+  icon: "yanfei.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Pyro,
+  weapon: EWeapon.Catalyst,
+  region: ERegion.Liyue
+}, {
+  id: 69,
+  groupId: EGroup.Default,
+  name: "Яо Яо",
+  icon: "yaoyao.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Dendro,
+  weapon: EWeapon.Polearm,
+  region: ERegion.Liyue
+}, {
+  id: 70,
+  groupId: EGroup.Default,
+  name: "Яэ Мико",
+  icon: "yae-miko.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Electro,
+  weapon: EWeapon.Catalyst,
+  region: ERegion.Inazuma
+}, {
+  id: 71,
+  groupId: EGroup.Default,
+  name: "Лини",
+  icon: "lyney.webp",
+  quality: EQuality.Legendary,
+  elementalType: EElementalType.Pyro,
+  weapon: EWeapon.Bow,
+  region: ERegion.Fontaine
+}, {
+  id: 72,
+  groupId: EGroup.Default,
+  name: "Линетт",
+  icon: "lynette.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Anemo,
+  weapon: EWeapon.Sword,
+  region: ERegion.Fontaine
+}, {
+  id: 73,
+  groupId: EGroup.Default,
+  name: "Фремине",
+  icon: "freminet.webp",
+  quality: EQuality.Epic,
+  elementalType: EElementalType.Cryo,
+  weapon: EWeapon.Claymore,
+  region: ERegion.Fontaine
+}];
