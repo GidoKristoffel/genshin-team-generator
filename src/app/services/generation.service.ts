@@ -6,6 +6,8 @@ import { CharactersService } from "./characters.service";
 import { TravelerService } from "./traveler.service";
 import { ShuffleService } from "./shuffle.service";
 import { SharedService } from "./shared.service";
+import { WeaponFilterService } from "./weapon-filter.service";
+import { RegionFilterService } from "./region-filter.service";
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +21,16 @@ export class GenerationService {
     private charactersService: CharactersService,
     private travelerService: TravelerService,
     private shuffleService: ShuffleService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private weaponFilterService: WeaponFilterService,
+    private regionFilterService: RegionFilterService
   ) {}
 
   public run(): void {
     this.resetMembers();
     this.filterByAvailableCharacters();
+    this.filterByAvailableWeapons();
+    this.filterByAvailableRegions();
     this.filterTraveler();
     this.saveLockedTeamMembersPosition();
     this.shuffleMembers();
@@ -42,6 +48,14 @@ export class GenerationService {
         .filter((member: ITeamMember) =>
           this.filterService.getFilterMembersIds().includes(member.id)
         );
+  }
+
+  private filterByAvailableWeapons(): void {
+    this.members = this.members.filter((member: ITeamMember) => this.weaponFilterService.getSelected().includes(member.weapon));
+  }
+
+  private filterByAvailableRegions(): void {
+    this.members = this.members.filter((member: ITeamMember) => this.regionFilterService.getSelected().includes(member.region));
   }
 
   private filterTraveler(): void {

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { IRegionFilter } from "../interfaces/filters.interface";
 import { regions } from "../../assets/filters";
+import { ERegion } from "../interfaces/members.interface";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegionFilterService {
   private filters: IRegionFilter[] = regions;
-  private selectedFilters: number[] = [];
+  private selectedFilters: ERegion[] = [];
 
   constructor() {
     this.init();
@@ -17,16 +18,16 @@ export class RegionFilterService {
     return this.filters;
   }
 
-  public add(id: number): void {
+  public add(id: ERegion): void {
     this.selectedFilters.push(id);
     this.selectedFilters.sort();
   }
 
-  public remove(id: number): void {
-    this.selectedFilters = this.selectedFilters.filter((weaponId: number) => weaponId !== id);
+  public remove(id: ERegion): void {
+    this.selectedFilters = this.selectedFilters.filter((region: ERegion) => region !== id);
   }
 
-  public getSelected(): number[] {
+  public getSelected(): ERegion[] {
     return this.selectedFilters;
   }
 
