@@ -35,12 +35,13 @@ export enum ERegion {
 
 export interface IMember {
   readonly id: number;
-  name: string;
-  icon: string;
-  quality: EQuality;
-  elementalType: EElementalType;
-  weapon: EWeapon;
-  region: ERegion;
+  readonly groupId: EGroup;
+  readonly name: string;
+  readonly icon: string;
+  readonly quality: EQuality;
+  readonly elementalType: EElementalType;
+  readonly weapon: EWeapon;
+  readonly region: ERegion;
 }
 
 export interface ITeamMember extends IMember {
@@ -57,4 +58,9 @@ export interface IFilterCharacter {
   id: number;
   quality: EQuality;
   selected: boolean;
+}
+
+export enum EGroup {
+  Traveler = 'traveler',
+  Default = 'default'
 }

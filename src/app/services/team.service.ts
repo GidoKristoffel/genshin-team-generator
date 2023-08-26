@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { ITeamMember, TTeam } from "../interfaces/members.interface";
 import { BehaviorSubject, Observable } from "rxjs";
+import { SharedService } from "./shared.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeamService {
   private team: BehaviorSubject<TTeam> = new BehaviorSubject<TTeam>([null, null, null, null]);
+
+  constructor(
+    private sharedService: SharedService
+  ) {}
 
   public watch(): Observable<TTeam> {
     return this.team;
@@ -56,5 +61,11 @@ export class TeamService {
       }
     });
     return teamIds;
+  }
+
+  public updatePosition(team: TTeam): void {
+    if (this.sharedService.arraysAreEqual(this.get(), team)) {
+      this.update(team);
+    }
   }
 }
