@@ -5,6 +5,7 @@ import { CdkDragDrop } from "@angular/cdk/drag-drop";
 import { DragAndDropService } from "../../services/drag-and-drop.service";
 import { TeamService } from "../../services/team.service";
 import { distinctUntilChanged } from "rxjs";
+import { GenerationService } from "../../services/generation.service";
 
 @Component({
   selector: 'app-main',
@@ -18,6 +19,7 @@ export class MainComponent implements OnInit {
     private shuffleService: ShuffleService,
     private dragAndDropService: DragAndDropService,
     private teamService: TeamService,
+    private generationService: GenerationService
   ) {}
 
   ngOnInit() {
@@ -25,12 +27,13 @@ export class MainComponent implements OnInit {
   }
 
   public generateRandomTeam(): void {
-    this.shuffleService.generateRandomTeam();
+    // this.shuffleService.generateRandomTeam();
+    this.generationService.run();
   }
 
   public onDrop(event: CdkDragDrop<ITeamMember[]>): void {
     this.team = this.dragAndDropService.moveItemInArray(event, this.team);
-    this.shuffleService.updateTeamPosition(this.team);
+    this.teamService.updatePosition(this.team);
   }
 
   public pinChange(pinned: boolean, index: number): void {
