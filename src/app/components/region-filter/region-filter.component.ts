@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegionFilterService } from "../../services/region-filter.service";
 import { IRegionFilter, IRegionFilterSelect } from "../../interfaces/filters.interface";
+import { ERegion } from "../../interfaces/members.interface";
 
 @Component({
   selector: 'app-region-filter',
@@ -22,7 +23,7 @@ export class RegionFilterComponent implements OnInit {
     this.filters = this.regionFilterService.get().map((filter: IRegionFilter) => ({...filter, selected: true}));
   }
 
-  public toggleFilter(id: number, index: number): void {
+  public toggleFilter(id: ERegion, index: number): void {
     this.filters[index].selected = !this.filters[index].selected;
 
     if (this.filters[index].selected) {

@@ -27,7 +27,6 @@ export class MainComponent implements OnInit {
   }
 
   public generateRandomTeam(): void {
-    // this.shuffleService.generateRandomTeam();
     this.generationService.run();
   }
 

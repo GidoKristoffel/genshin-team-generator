@@ -1,24 +1,25 @@
 import { IRegionFilter } from "../app/interfaces/filters.interface";
+import { ERegion, EWeapon } from "../app/interfaces/members.interface";
 
 export const weapons = [
   {
-    id: 1,
+    id: EWeapon.Sword,
     src: 'assets/img/weapons/sword.webp',
     title: 'Sword',
   }, {
-    id: 2,
+    id: EWeapon.Claymore,
     src: 'assets/img/weapons/claymore.webp',
     title: 'Claymore',
   }, {
-    id: 3,
+    id: EWeapon.Bow,
     src: 'assets/img/weapons/bow.webp',
     title: 'Bow',
   }, {
-    id: 4,
+    id: EWeapon.Catalyst,
     src: 'assets/img/weapons/catalyst.webp',
     title: 'Catalyst',
   }, {
-    id: 5,
+    id: EWeapon.Polearm,
     src: 'assets/img/weapons/polearm.webp',
     title: 'Polearm',
   }
@@ -26,35 +27,35 @@ export const weapons = [
 
 export const regions: IRegionFilter[] = [
   {
-    id: 1,
+    id: ERegion.Mondstadt,
     src: 'assets/img/regions/mondstadt.webp',
     title: 'Mondstadt'
   }, {
-    id: 2,
+    id: ERegion.Liyue,
     src: 'assets/img/regions/liyue.webp',
     title: 'Liyue'
   }, {
-    id: 3,
+    id: ERegion.Inazuma,
     src: 'assets/img/regions/inazuma.webp',
     title: 'Inazuma'
   }, {
-    id: 4,
+    id: ERegion.Sumeru,
     src: 'assets/img/regions/sumeru.webp',
     title: 'Sumeru'
   }, {
-    id: 5,
+    id: ERegion.Fontaine,
     src: 'assets/img/regions/fontaine.webp',
     title: 'Fontaine'
   }, {
-    id: 6,
+    id: ERegion.Natlan,
     src: 'assets/img/regions/unknown.webp',
     title: 'Natlan'
   }, {
-    id: 7,
+    id: ERegion.Snezhnaya,
     src: 'assets/img/regions/unknown.webp',
     title: 'Snezhnaya'
   }, {
-    id: 8,
+    id: ERegion.Other,
     src: 'assets/img/regions/unknown.webp',
     title: 'Other'
   }

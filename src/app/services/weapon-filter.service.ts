@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IWeaponFilter } from "../interfaces/filters.interface";
 import { weapons } from "../../assets/filters";
+import { EWeapon } from "../interfaces/members.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { weapons } from "../../assets/filters";
 export class WeaponFilterService {
   private weaponFilters: IWeaponFilter[] = weapons;
 
-  private selectedWeapons: number[] = [];
+  private selectedWeapons: EWeapon[] = [];
 
   constructor() {
     this.init();
@@ -18,16 +19,16 @@ export class WeaponFilterService {
     return this.weaponFilters;
   }
 
-  public add(id: number): void {
+  public add(id: EWeapon): void {
     this.selectedWeapons.push(id);
     this.selectedWeapons.sort();
   }
 
-  public remove(id: number): void {
-    this.selectedWeapons = this.selectedWeapons.filter((weaponId: number) => weaponId !== id);
+  public remove(id: EWeapon): void {
+    this.selectedWeapons = this.selectedWeapons.filter((weaponId: EWeapon) => weaponId !== id);
   }
 
-  public getSelected(): number[] {
+  public getSelected(): EWeapon[] {
     return this.selectedWeapons;
   }
 

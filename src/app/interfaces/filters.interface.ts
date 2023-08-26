@@ -4,6 +4,7 @@ import {
 } from "../components/character-availability-filter/character-availability-filter.component";
 import { WeaponFilterComponent } from "../components/weapon-filter/weapon-filter.component";
 import { RegionFilterComponent } from "../components/region-filter/region-filter.component";
+import { ERegion, EWeapon } from "./members.interface";
 
 export interface IFilterTab {
   title: string;
@@ -11,7 +12,7 @@ export interface IFilterTab {
 }
 
 export interface IWeaponFilter {
-  id: number;
+  id: EWeapon;
   src: string;
   title: string;
 }
@@ -21,7 +22,7 @@ export interface IWeaponFilterSelect extends IWeaponFilter {
 }
 
 export interface IRegionFilter {
-  id: number;
+  id: ERegion;
   src: string;
   title: string;
 }
