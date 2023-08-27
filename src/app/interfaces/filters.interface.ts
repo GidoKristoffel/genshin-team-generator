@@ -9,6 +9,7 @@ import { ERegion, EWeapon } from "./members.interface";
 export interface IFilterTab {
   title: string;
   content: Type<CharacterAvailabilityFilterComponent | WeaponFilterComponent | RegionFilterComponent> | null;
+  count: number;
 }
 
 export interface IWeaponFilter {
