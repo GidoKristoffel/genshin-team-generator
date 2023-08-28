@@ -7,9 +7,9 @@ import { RegionFilterComponent } from "../components/region-filter/region-filter
 import { ERegion, EWeapon } from "./members.interface";
 
 export interface IFilterTab {
+  id: TTabId;
   title: string;
   content: Type<CharacterAvailabilityFilterComponent | WeaponFilterComponent | RegionFilterComponent> | null;
-  count: number;
 }
 
 export interface IWeaponFilter {
@@ -31,3 +31,19 @@ export interface IRegionFilter {
 export interface IRegionFilterSelect extends IRegionFilter {
   selected: boolean;
 }
+
+export enum TTabId {
+  Characters = 'characters',
+  Weapons = 'weapons',
+  Regions = 'regions'
+}
+
+export interface ITabQuantity {
+  [TTabId.Characters]: number,
+  [TTabId.Weapons]: number,
+  [TTabId.Regions]: number
+}
+
+export type TSubWeapon = EWeapon | null;
+
+export type TSubWeapons = [TSubWeapon, TSubWeapon, TSubWeapon, TSubWeapon];

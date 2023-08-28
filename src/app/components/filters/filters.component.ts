@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit, Type } from '@angular/core'
 import {
   CharacterAvailabilityFilterComponent
 } from "../character-availability-filter/character-availability-filter.component";
-import { IFilterTab } from "../../interfaces/filters.interface";
+import { IFilterTab, ITabQuantity, TTabId } from "../../interfaces/filters.interface";
 import { WeaponFilterComponent } from "../weapon-filter/weapon-filter.component";
 import { RegionFilterComponent } from "../region-filter/region-filter.component";
 import { FilterQuantityService } from "../../services/filter-quantity.service";
@@ -15,19 +15,25 @@ import { distinctUntilChanged } from "rxjs";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FiltersComponent implements OnInit {
-  public tabs: IFilterTab[] = [{
+  public readonly tabs: IFilterTab[] = [{
+    id: TTabId.Characters,
     title: 'Персонажы',
     content: CharacterAvailabilityFilterComponent,
-    count: 0,
   }, {
+    id: TTabId.Weapons,
     title: 'Оружие',
     content: WeaponFilterComponent,
-    count: 0,
   }, {
+    id: TTabId.Regions,
     title: 'Регион',
     content: RegionFilterComponent,
-    count: 0,
   }];
+
+  public quantity: ITabQuantity = {
+    [TTabId.Characters]: 0,
+    [TTabId.Weapons]: 0,
+    [TTabId.Regions]: 0
+  };
 
   constructor(
     private filterQuantityService: FilterQuantityService
@@ -44,7 +50,7 @@ export class FiltersComponent implements OnInit {
       .watchCharacters()
       .pipe(distinctUntilChanged())
       .subscribe((charactersQuantity: number) => {
-        this.tabs[0].count = charactersQuantity;
+        this.quantity[TTabId.Characters] = charactersQuantity;
       });
   }
 
@@ -53,7 +59,7 @@ export class FiltersComponent implements OnInit {
       .watchWeapons()
       .pipe(distinctUntilChanged())
       .subscribe((weaponsQuantity: number) => {
-        this.tabs[1].count = weaponsQuantity;
+        this.quantity[TTabId.Weapons] = weaponsQuantity;
       });
   }
 
@@ -62,7 +68,7 @@ export class FiltersComponent implements OnInit {
       .watchRegions()
       .pipe(distinctUntilChanged())
       .subscribe((regionsQuantity: number) => {
-        this.tabs[2].count = regionsQuantity;
+        this.quantity[TTabId.Regions] = regionsQuantity;
       });
   }
 }
