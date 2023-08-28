@@ -3,7 +3,7 @@
     <ng-template mat-tab-label>
       <svg-icon src="assets/img/star.svg"></svg-icon>
       {{ tab.title }}
-      {{ tab.count }}
+      {{ quantity[tab.id] }}
     </ng-template>
     <ng-container *ngComponentOutlet="tab.content"></ng-container>
   </mat-tab>
