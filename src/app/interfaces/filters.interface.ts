@@ -47,3 +47,7 @@ export interface ITabQuantity {
 export type TSubWeapon = EWeapon | null;
 
 export type TSubWeapons = [TSubWeapon, TSubWeapon, TSubWeapon, TSubWeapon];
+
+export type TSubRegion = ERegion | null;
+
+export type TSubRegions = [TSubRegion, TSubRegion, TSubRegion, TSubRegion];

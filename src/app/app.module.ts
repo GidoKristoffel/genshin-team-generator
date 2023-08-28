@@ -16,6 +16,7 @@ import { AngularSvgIconModule } from "angular-svg-icon";
 import { HttpClientModule } from "@angular/common/http";
 import { RegionFilterComponent } from './components/region-filter/region-filter.component';
 import { WeaponFilterComponent } from './components/weapon-filter/weapon-filter.component';
+import { SubFiltersComponent } from './components/sub-filters/sub-filters.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { WeaponFilterComponent } from './components/weapon-filter/weapon-filter.
     CharacterAvailabilityFilterComponent,
     RegionFilterComponent,
     WeaponFilterComponent,
+    SubFiltersComponent,
   ],
   imports: [
     BrowserModule,
